@@ -43,6 +43,7 @@
 
 ####Misc notes
 
+* A maps XML file is used to specify how the PGM plugin will setup a match, it's useless without the PGM plugin to run it.
 * Guide is still a WIP, some sections need rewrites to make them clearer.
 * See [maps.oc.tc ![](./images/External-Link.png)](https://maps.oc.tc) for XML file examples.
 * The XML files should be run through a XML validator before being submitted.
