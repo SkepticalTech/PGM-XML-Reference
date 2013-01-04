@@ -33,7 +33,7 @@
     
     </map>
 
-####§
+####Undocumented Stuff §
 
 * `Changelog.md` Added customizable overhead colours for teams.
 * `Changelog.md` Added the Lane module for enforcing lane restrictions on RFW maps. [Example ![](./images/External-Link.png)](https://maps.oc.tc/Parallax/map.xml)
@@ -43,6 +43,7 @@
 
 ####Misc notes
 
+* What is XML? [Introduction to XML ![](./images/External-Link.png)](http://www.w3schools.com/xml/xml_whatis.asp)
 * A maps XML file is used to specify how the PGM plugin will setup a match, it's useless without the PGM plugin to run it.
 * Guide is still a WIP, some sections need rewrites to make them clearer.
 * See [maps.oc.tc ![](./images/External-Link.png)](https://maps.oc.tc) for XML file examples.
@@ -71,7 +72,7 @@ Players have to retrieve wool blocks from the enemy teams side of the map and th
        </wool>
     </wools>
     
-You can group multiple victory monuments from the same team inside a single `<wools team="team name">` element. And then define that teams individual wool colours inside of a `<wool>` element.
+You can group multiple victory monuments from the same team inside a single `<wools team="team name">` element; and then define that teams individual wool colours inside of a `<wool>` element. ~
 
     <wools team="red">
         <wool color="cyan">
@@ -665,7 +666,8 @@ List of item names: [bukkit docs - Material ![](./images/External-Link.png)](htt
     c RED
     d LIGHT_PURPLE
     e YELLOW
-    f WHITE
+    f WHITE        
+
 
 #### Formatting Codes
 
@@ -676,7 +678,7 @@ List of item names: [bukkit docs - Material ![](./images/External-Link.png)](htt
     o ITALIC
 
 Copied from: [bukkit docs - Chat Color ![](./images/External-Link.png)](http://jd.bukkit.org/doxygen/d7/dc0/enumorg_1_1bukkit_1_1ChatColor.html)  
-See: [bukkit docs - Dye Colour ![](./images/External-Link.png)](http://jd.bukkit.org/doxygen/d2/d1c/enumorg_1_1bukkit_1_1DyeColor.html) for valid wool color names.
+See: [bukkit docs - Dye Colour ![](./images/External-Link.png)](http://jd.bukkit.org/doxygen/d2/d1c/enumorg_1_1bukkit_1_1DyeColor.html) for valid wool and dye color names.
 
 ####[Enchantments](id:enchantments_S)
 
@@ -785,4 +787,4 @@ Copied from: [bukkit docs - Enchantments ![](./images/External-Link.png)](http:/
 
 ### [Go to Top](#pageTop)
 
-*Last edited: January 2, 2013*
+*Last edited: January 4, 2013*
