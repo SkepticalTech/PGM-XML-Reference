@@ -39,6 +39,10 @@
 * `Changelog.md` Added the Lane module for enforcing lane restrictions on RFW maps. [Example ![](./images/External-Link.png)](https://maps.oc.tc/Parallax/map.xml)
 * `Changelog.md` Added the ability for maps to specify a difficulty they must be run with.
 * On [Viridun ![](./images/External-Link.png)](https://maps.oc.tc/Viridun/map.xml) `<spawn>` elements have multiple region areas, shouldn't they be inside of a `<union>` tag?
+* Gold & glass core mode. Is it automatic or are there specific settings?
+* With multiple team spawns how does the PGM plugin pick where player spawns?
+* Does it validate spawn locations preventing a spawn inside of a block, in thin air, etc?
+* Map player limit? 150
 
 
 ####Misc notes
@@ -55,13 +59,13 @@
 <br/><br/>
 ###[Game Modes](id:gameModes_S)
 
-All game modes are compatible with each other except for Blitz, it will not work with any other game mode. For example you can mix `<wools>` and `<destroyables>` however all objectives have to be completed for the match to end.  
+All game modes are compatible with each other except for Blitz, it will not work with any other game mode. For example you can mix `<wools>` and `<destroyables>` however all objectives have to be completed for the match to end. It is common for maps to only have 2 teams, although more are possible it usually just causes confusion.
 
-Use common sense when mixing game modes.
+* Use common sense when mixing game modes.
 
-####[Capture the Wool](id:ctw_S)
+####[Capture the Wool](id:ctw_S) ~
 
-Players have to retrieve wool blocks from the enemy teams side of the map and then put them into their victory monument(s). The area a wool has to be placed in is protected by default to prevent it from being blocked with another block. ~
+Players have to retrieve wool blocks from the enemy teams side of the map and then put them into their victory monument(s). The area a wool has to be placed in is protected by default to prevent it from being blocked with another block.
 
     <wools>
        <wool team="blue" color="lime">                  
@@ -73,7 +77,7 @@ Players have to retrieve wool blocks from the enemy teams side of the map and th
        </wool>
     </wools>
     
-You can group multiple victory monuments from the same team inside a single `<wools team="team name">` element; and then define that teams individual wool colours inside of a `<wool>` element. ~
+You can group multiple victory monuments from the same team inside a single `<wools team="team name">` element; and then define that teams individual wool colours inside of a `<wool>` element.
 
     <wools team="red">
         <wool color="cyan">
@@ -113,7 +117,7 @@ Completion specifies how much of the material inside of the region must be remov
 
 ####[Blitz](id:blitz_S)
 
-Game will run for a specified amount of time, players will have to find and kill enemy players. The last team standing wins.
+The game will run for a specified amount of time, players will have to find and kill enemy players. Each player has a limited amount of lives, and after they are used up the player is moved to the observer team. The match ends after the specified amount of time, or when one team is eliminated. If the match timer ends before a team is eliminated the team with the most players remaining wins.
 
     <blitz>
         <!-- Time till the match ends in minutes -->
@@ -124,9 +128,9 @@ Game will run for a specified amount of time, players will have to find and kill
     </blitz>
 
 
-####[Destroy the Core](id:dtc_S)
+####[Destroy the Core](id:dtc_S) ~
 
-Players have to locate and break the enemy teams core, usually an obsidian sphere filled with lava. The lava has to leak out a certain amount for the game to end.
+Players have to locate and break the enemy teams core, usually an obsidian sphere filled with lava. The lava has to leak out a certain amount for the game to end. Teams can have more than one core.
 
     <cores material="obsidian" leak="8">
         <core team="blue"><region min="10,15,12" max="12,13,16"/></core>
@@ -202,10 +206,10 @@ Setup the teams, their names and represented colours. See [bukkit colours](#colo
        <team color="blue" max="50">Blue Team</team>
     </teams>
 
-Don't forget that the total maximum number of players in the above example is 100. Maps currently have a player limit of 150, so 100 players in total would allow 50 observers. §
+Don't forget that the total maximum number of players in the above example is 100. Maps currently have a player limit of 150, so 100 players in total would allow 50 observers.
 
 
-####[Items](id:items_S)
+####[Items](id:items_S) ~
 Item tags have many different attributes, and some may only apply to certain items. Such as the `color=""` attribute, it currently only applies to leather armour.  
 List of item names: [bukkit docs - Material ![](./images/External-Link.png)](http://jd.bukkit.org/apidocs/org/bukkit/Material.html)
 
@@ -414,20 +418,20 @@ The area a region applies too is specified with one or more of the following ele
 
     <!-- Note that Y is the up/down axis in minecraft -->
     
-    <rectangle name=”something” min=”X1,Z1” max=”X2,Z2”/>
+    <rectangle name="something" min="X1,Z1" max="X2,Z2"/>
     <!-- A Rectangle from X1,Z1 to X2,Z2 -->
        
-    <cuboid name=”something” min=”X1,Y1,Z1” max=”X2,Y2,Z2”/>
+    <cuboid name="something" min="X1,Y1,Z1" max="X2,Y2,Z2"/>
     <!-- A rectangular solid from X1,Y1,Z1 to X2,Y2,Z2 -->
        
-    <circle name=”something” center=”X1,Z1,” radius=”R”/>
+    <circle name="something" center="X1,Z1," radius="R"/>
     <!-- A circle located at X1,Z1 with a radius of R -->
     Goes from 0 to map height, ie doesn't check player Z
        
-    <cylinder name”something” base=”X1,Y1,Z1” radius=”R” height=”H”/>
+    <cylinder name"something" base="X1,Y1,Z1" radius="R" height="H"/>
     <!-- A cylinder located at X1,Z1,Y1 with a radius of R and a height of H -->    
     
-    <sphere name”something” origin=”X1,Y1,Z1” radius=”R”/>
+    <sphere name"something" origin="X1,Y1,Z1" radius="R"/>
     <!-- A sphere located at X1,Y1,Z1 with a radius of R -->
     
     <block>X,Y,Z</block>
@@ -568,8 +572,7 @@ Spawns are defined as follows.
 The default element specifies where observers and players without a team spawn.  
 `yaw=""` specifies what direction the player is looking horizontally from -180° to 180°. South 0°, East -90°, North 180° and West 90°.  
 
-Multiple spawns from the same team can be grouped inside of a single `<spawns team="team name">` element.  
-How does the PGM plugin pick in which spawn the player spawns? Does it validate spawn locations preventing a spawn inside of a block, in thin air, etc? §
+Multiple spawns from the same team can be grouped inside of a single `<spawns team="team name">` element.
 
     <spawns team="blue">
         <!-- Blue Team Spawn A -->
