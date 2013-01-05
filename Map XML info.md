@@ -48,6 +48,7 @@
 * Guide is still a WIP, some sections need rewrites to make them clearer.
 * See [maps.oc.tc ![](./images/External-Link.png)](https://maps.oc.tc) for XML file examples.
 * The XML files should be run through a XML validator before being submitted.
+* XML files should also be correctly indented to improve readability.
 * Tags that accept a time are in seconds unless suffixed with m, h, etc.
 
 
@@ -245,8 +246,8 @@ The colour is represented in hexadecimal.
 
 Colours in item names or lore are specified with the grave symbol `` ` and then the minecraft [color code](#colours_S).
 
-    <item name="`6Golden Sword"> <!-- This would colour the text gold/yellow. -->
-    <item lore="`4The One and Only"> <!-- This would colour the text red. -->
+    <item name="`6Golden Sword">gold sword</item> <!-- This would colour the text gold/yellow. -->
+    <item lore="`4The One and Only">stick</item> <!-- This would colour the text red. -->
 
 
 ####[Potion Effects](id:potionEffects_S)
