@@ -1,8 +1,3 @@
-`§` Indicates that the previous statement is a logical assumption by the author, and not based on any facts as of when it was written.  
-`§` May also indicate that the author is unclear about how the element, tag or attribute works.  
-`~` Indicates that the section is incomplete or may need a rewrite.
-
-<br/><br/>
 ##![](./images/Cabinet.png)[Map XML Reference](id:pageTop)
 ***
 
@@ -792,3 +787,10 @@ Copied from: [bukkit docs - Enchantments ![](./images/External-Link.png)](http:/
 ### [Go to Top](#pageTop)
 
 *Last edited: January 4, 2013*
+
+
+<br/><br/>
+#### Symbol Information
+`§` Indicates that the previous statement is a logical assumption by the author, and not based on any facts as of when it was written.  
+`§` May also indicate that the author is unclear about how the element, tag or attribute works.  
+`~` Indicates that the section is incomplete or may need a rewrite.
