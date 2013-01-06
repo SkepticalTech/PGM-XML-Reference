@@ -51,20 +51,6 @@
 &lt;/map&gt;
 </code></pre>
 
-<h4>Undocumented Stuff §</h4>
-
-<ul>
-<li><code>Changelog.md</code> Added customizable overhead colours for teams.</li>
-<li><code>Changelog.md</code> Added the Lane module for enforcing lane restrictions on RFW maps. <a href="https://maps.oc.tc/Parallax/map.xml">Example <img src="./images/External-Link.png" alt="" /></a></li>
-<li><code>Changelog.md</code> Added the ability for maps to specify a difficulty they must be run with.</li>
-<li>On <a href="https://maps.oc.tc/Viridun/map.xml">Viridun <img src="./images/External-Link.png" alt="" /></a> <code>&lt;spawn&gt;</code> elements have multiple region areas, shouldn't they be inside of a <code>&lt;union&gt;</code> tag?</li>
-<li>Gold &amp; glass core mode. Is it automatic or are there specific settings?</li>
-<li>With multiple team spawns how does the PGM plugin pick where player spawns?</li>
-<li>Does it validate spawn locations preventing a spawn inside of a block, in thin air, etc?</li>
-<li>Map player limit? 150</li>
-</ul>
-
-
 <h4>Misc notes</h4>
 
 <ul>
@@ -237,7 +223,7 @@
 
 <p>Don't forget that the total maximum number of players in the above example is 100. Maps currently have a player limit of 150, so 100 players in total would allow 50 observers.</p>
 
-<h4><span id="items_S">Items</span> ~</h4>
+<h4><span id="items_S">Items</span></h4>
 
 <p>Item tags have many different attributes, and some may only apply to certain items. Such as the <code>color=""</code> attribute, it currently only applies to leather armour.<br/>
 List of item names: <a href="http://jd.bukkit.org/apidocs/org/bukkit/Material.html">bukkit docs - Material <img src="./images/External-Link.png" alt="" /></a></p>
@@ -473,9 +459,9 @@ allow-mobs / deny-mobs
 
 <p><br/><br/></p>
 
-<h3><span id="regions_S">Regions</span></h3>
+<h3><span id="regions_S">Regions</span> ~</h3>
 
-<p>The area a region applies too is specified with one or more of the following elements. Use <code>oo</code> to specify infinity in coordinates. ~</p>
+<p>The area a region applies too is specified with one or more of the following elements. Use <code>oo</code> to specify infinity in coordinates.</p>
 
 <pre><code>&lt;!-- Note that Y is the up/down axis in minecraft --&gt;
 

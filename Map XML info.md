@@ -28,17 +28,6 @@
     
     </map>
 
-####Undocumented Stuff §
-
-* `Changelog.md` Added customizable overhead colours for teams.
-* `Changelog.md` Added the Lane module for enforcing lane restrictions on RFW maps. [Example ![](./images/External-Link.png)](https://maps.oc.tc/Parallax/map.xml)
-* `Changelog.md` Added the ability for maps to specify a difficulty they must be run with.
-* On [Viridun ![](./images/External-Link.png)](https://maps.oc.tc/Viridun/map.xml) `<spawn>` elements have multiple region areas, shouldn't they be inside of a `<union>` tag?
-* Gold & glass core mode. Is it automatic or are there specific settings?
-* With multiple team spawns how does the PGM plugin pick where player spawns?
-* Does it validate spawn locations preventing a spawn inside of a block, in thin air, etc?
-* Map player limit? 150
-
 
 ####Misc notes
 
@@ -204,7 +193,7 @@ Setup the teams, their names and represented colours. See [bukkit colours](#colo
 Don't forget that the total maximum number of players in the above example is 100. Maps currently have a player limit of 150, so 100 players in total would allow 50 observers.
 
 
-####[Items](id:items_S) ~
+####[Items](id:items_S)
 Item tags have many different attributes, and some may only apply to certain items. Such as the `color=""` attribute, it currently only applies to leather armour.  
 List of item names: [bukkit docs - Material ![](./images/External-Link.png)](http://jd.bukkit.org/apidocs/org/bukkit/Material.html)
 
@@ -408,9 +397,9 @@ Example:
     
 
 <br/><br/>
-###[Regions](id:regions_S)
+###[Regions](id:regions_S) ~
 
-The area a region applies too is specified with one or more of the following elements. Use `oo` to specify infinity in coordinates. ~
+The area a region applies too is specified with one or more of the following elements. Use `oo` to specify infinity in coordinates.
 
     <!-- Note that Y is the up/down axis in minecraft -->
     
