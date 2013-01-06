@@ -218,13 +218,6 @@ List of item names: [bukkit docs - Material ![](./images/External-Link.png)](htt
     color="RRGGBB"
     damage="0"
 
-Armour slots have predefined tags to make it easier to give them to a player. They accept most of the properties of normal items.
-
-    <helmet>iron helmet</helmet>
-    <chestplate>diamond chestplate</chestplate>
-    <leggings>gold leggings</leggings>
-    <boots>leather boots</boots>
-
 
 The `slot=""` attribute specifies where the item will be placed in the inventory. [Inventory slot reference](#inv_S).  
 Enchantments use the bukkit [enchantment name](#enchantments_S), the level of the enchantment is specified after a colon `:`. Multiple enchantments are separated by a semicolon `;`.
@@ -232,6 +225,20 @@ Enchantments use the bukkit [enchantment name](#enchantments_S), the level of th
     <item enchantment="sharpness:2">iron sword</item> <!-- A sharpness II iron sword -->
     <item enchantment="knockback:4">280</item> <!-- A knockback IV stick -->
 
+
+Items can be give custom names and lore with the `name=""` and `lore=""` attributes. Colours in item names or lore are specified with the grave symbol `` ` and then the minecraft [color code](#colours_S).
+
+    <item lore="Majick Dust">331</item> <!-- Redstone dust with a normal name. -->
+    <item name="`6Golden Sword">gold sword</item> <!-- Gold sword with a gold/yellow name. -->
+    <item lore="`4The One and Only">stick</item> <!-- A stick with the lore coloured red. -->
+
+
+Armour slots have predefined tags to make it easier to give them to a player. They accept most of the properties of normal items.
+
+    <helmet>iron helmet</helmet>
+    <chestplate>diamond chestplate</chestplate>
+    <leggings>gold leggings</leggings>
+    <boots>leather boots</boots>
 
 Enchanting, naming or giving armour lore works the same way as with items.
 
@@ -241,12 +248,6 @@ Items like leather armour are coloured with the `color=""` attribute.
 The colour is represented in hexadecimal.
 
     <helmet color="cd0000">leather helmet</helmet>
-
-
-Colours in item names or lore are specified with the grave symbol `` ` and then the minecraft [color code](#colours_S).
-
-    <item name="`6Golden Sword">gold sword</item> <!-- This would colour the text gold/yellow. -->
-    <item lore="`4The One and Only">stick</item> <!-- This would colour the text red. -->
 
 
 ####[Potion Effects](id:potionEffects_S)
