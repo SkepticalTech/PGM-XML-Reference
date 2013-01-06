@@ -1,4 +1,4 @@
-####Undocumented Stuff §
+####Undocumented Stuff
 
 * `Changelog.md` Added customizable overhead colours for teams.
 * `Changelog.md` Added the Lane module for enforcing lane restrictions on RFW maps. [Example ![](./images/External-Link.png)](https://maps.oc.tc/Parallax/map.xml)
