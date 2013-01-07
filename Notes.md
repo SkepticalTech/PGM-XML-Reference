@@ -2,6 +2,7 @@
 
 * Maybe add documentation for the `<spawns safe="true">` attribute?
 * `TODO:` watch a match of Parallax to see how exactly lanes function so I can write a better description.
+* Perhaps follow the [wikipedia writing guide](http://en.wikipedia.org/wiki/Wikipedia:Writing_better_articles) & rewrite the sections that use you or your?
 
 Stolen from [RFV3 ![](./images/External-Link.png)](https://maps.oc.tc/RFV3/map.xml) What exactly does this do?
 
