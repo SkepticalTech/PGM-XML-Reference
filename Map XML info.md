@@ -4,7 +4,7 @@
 
 #### Game Modes: [Capture the Wool](#ctw_S) | [Destroy the Monument](#dtm_S) | [Blitz](#blitz_S) | [Destroy the Core](#dtc_S) | [Team Death-match](#tdm_S) | [Score Boxes](#score_S)
 #### Game Settings: [Rules](#rules_S) | [Kits](#kits_S) | [Teams](#teams_S) | [Items](#items_S) | [Potion Effects](#potionEffects_S) | [Repair & Remove](#repairAndRemove_S) | [Projectiles](#projectiles_S) | [TNT](#tnt_S) | [Mobs](#mobs_S) | [Other Settings](#other_S)
-#### Regions: [Filters](#filters_S) | [Regions](#regions_S) | [Spawns](#spawns_S) | [Playable Region](#playableRegion_S) | [Portals](#portals_S)
+#### Regions: [Filters](#filters_S) | [Regions](#regions_S) | [Spawns](#spawns_S) | [Playable Region](#playableRegion_S) | [Lanes](#lanes_S) | [Portals](#portals_S)
 #### Reference: [Inventory](#inv_S) | [Colours](#colours_S) | [Enchantments](#enchantments_S) | [Potions](#potions_S)
 <br/>
 
@@ -31,9 +31,11 @@
 
 ####Misc notes
 
+> Guide is still a WIP, some sections need rewrites to make them clearer.
+
 * What is XML? [Introduction to XML ![](./images/External-Link.png)](http://www.w3schools.com/xml/xml_whatis.asp)
+* PGM stands for PVP Game Manager.
 * A maps XML file is used to specify how the PGM plugin will setup a match, it's useless without the PGM plugin to run it.
-* Guide is still a WIP, some sections need rewrites to make them clearer.
 * See [maps.oc.tc ![](./images/External-Link.png)](https://maps.oc.tc) for XML file examples.
 * The XML files should be run through a XML validator before being submitted.
 * XML files should also be correctly indented to improve readability.
@@ -47,7 +49,7 @@ All game modes are compatible with each other except for Blitz, it will not work
 
 * Use common sense when mixing game modes.
 
-####[Capture the Wool](id:ctw_S) ~
+####[Capture the Wool](id:ctw_S)
 
 Players have to retrieve wool blocks from the enemy teams side of the map and then put them into their victory monument(s). The area a wool has to be placed in is protected by default to prevent it from being blocked with another block.
 
@@ -112,9 +114,9 @@ The game will run for a specified amount of time, players will have to find and 
     </blitz>
 
 
-####[Destroy the Core](id:dtc_S) ~
+####[Destroy the Core](id:dtc_S)
 
-Players have to locate and break the enemy teams core, usually an obsidian sphere filled with lava. The lava has to leak out a certain amount for the game to end. Teams can have more than one core.
+Players have to locate and break the enemy teams core, usually an obsidian sphere filled with lava. The lava has to leak out a certain amount for the game to end. Teams can have more than one core. Cores automatically change from their base material to gold after 15 minutes and glass after 20.
 
     <cores material="obsidian" leak="8">
         <core team="blue"><region min="10,15,12" max="12,13,16"/></core>
@@ -183,7 +185,7 @@ In the example above players from blue team will get a blue helmet, players from
 
 ####[Teams](id:teams_S)
 
-Setup the teams, their names and represented colours. See [bukkit colours](#colours_S) for valid team colours. The player limit is defined inside of the `max=""` attribute.
+Setup the teams, their names and represented colours. See [bukkit colours](#colours_S) for valid team colours. The player limit is defined inside of the `max=""` attribute. Teams can have a custom overhead color with the `overhead-color=""` attribute.
 
     <teams>
        <team color="dark red" max="50">Red Team</team>
@@ -266,12 +268,26 @@ Defines items that will be deleted when dropped on the map. Also works when item
 
 ####[Projectiles](id:projectiles_S)
 
-Projectiles can be modified to shoot a different entity at a custom speed. All entities can be used as defined in the [bukkit docs - Entity ![](./images/External-Link.png)](http://jd.bukkit.org/doxygen/d5/d27/namespaceorg_1_1bukkit_1_1entity.html). However some may not work as expected, crash the server, or look quite ridiculous.
-
     <modifybowprojectile>        <projectile>EnderPearl</projectile>        <velocityMod>2.5</velocityMod>
     </modifybowprojectile>
 
-The PGM plugin will calculate the damage the projectile does using the same formula as minecraft does for arrows. This means that a flying pig with a velocity of 20 will almost certainly kill you.
+Projectiles can be modified to shoot a different entity at a custom speed. The PGM plugin will calculate the damage the projectile does using the same formula as minecraft does for arrows. This means that a flying fish with a velocity of 40 will almost certainly kill you.
+
+All the following projectiles can be used.
+
+    Arrow
+    Egg
+    EnderPearl
+    Fireball
+    Fish
+    LargeFireball
+    SmallFireball
+    Snowball
+    ThrownExpBottle
+    ThrownPotion
+    WitherSkull
+    
+Copied from [bukkit docs - Projectile ![](./images/External-Link.png)](http://jd.bukkit.org/dev/apidocs/org/bukkit/entity/Projectile.html)
 
 
 ####[TNT](id:tnt_S)
@@ -295,7 +311,7 @@ By default PGM disables all mob spawing. Enable specific mob spawning with the `
     
     <!-- Filter elements -->
     
-    <spawn>spawn type</spawn> <-- spawner, spawner egg, and world? § -->
+    <spawn>spawn type</spawn> <-- spawner & spawner egg -->
     <mob>mob name</mob>
     <entity>entitiy name</entity>
 
@@ -336,15 +352,18 @@ Change friendly fire, this will allow teammates to shoot each-other, instead of 
 
     <friendlyfire>on</friendlyfire> <!-- Defaults to off -->
 
+The maps difficulty can be specified from 0 (peaceful) to 3 (hard). If not specified it defaults to the default worlds difficulty. This mainly influences a players food bar.
+
+    <difficulty>1</difficulty>
 
 <br/><br/>
-###[Filters](id:filters_S)
+###[Filters](id:filters_S) ~
 
     <filters>
         <filter name="no-world" parents="deny-world"></filter>
     </filters>
 
-Filters are used to filter player, block and world events in regions. The filter name is used to reference it inside of regions. Filters can inherit filters using the `parents=""` attribute.
+Filters are used to filter player, block and world events in regions. The filter name is used to reference it inside of regions. On their own filters do nothing, you need to apply them to regions for them to do something. Filters can inherit filters using the `parents=""` attribute.
 
 ####Predefined Filter Parents
 
@@ -374,12 +393,6 @@ Filters can have exceptions such as blocking all player access and then allowing
     <!-- Exception elements -->
     <team>team name</team>
     <block>block name</block>
-
-§ Stolen from [RFV3 ![](./images/External-Link.png)](https://maps.oc.tc/RFV3/map.xml)
-
-    <filter name="no-void" parents="allow-all">
-        <deny><void/></deny>
-    </filter>
     
 Example:
 
@@ -421,7 +434,7 @@ The area a region applies too is specified with one or more of the following ele
     
     <block>X,Y,Z</block>
     <!-- A single block located at | X,Y,Z -->
-
+    
     
     <!-- Region area and combination attributes -->
     name="name"
@@ -429,7 +442,7 @@ The area a region applies too is specified with one or more of the following ele
 
 
 Regions can be grouped inside of `<apply>` elements or [region combination](#regionCombinations_S) elements.  
-Filters are applied to regions as attributes of the `<apply>` element.
+Filters and kits are applied to regions as attributes of the `<apply>` element.
 
     <apply><region1>..</apply>
     
@@ -441,18 +454,28 @@ Filters are applied to regions as attributes of the `<apply>` element.
     
     exit="filter name"
     <!-- Filter player exit events-->
-
+    
     block="filter name"
     <!-- Filter block place and break events-->
-
+    
     block-place="filter name"
     <!-- Filter block place events-->
     
     block-break="filter name"
     <!-- Filter block break events-->
-
+    
+    kit="kit name"
+    <!-- Give a kit to players entering the region -->
+    
     <apply enter="only-blue" message="You may not enter the enemy team's base!">
         <region name="region name"/>
+    </apply>
+
+Example kit region from [Anathema](https://maps.oc.tc/Anathema/map.xml).
+
+    <apply kit="knight">
+        <region name="r-knight"/>
+        <region name="b-knight"/>
     </apply>
 
 
@@ -557,7 +580,7 @@ Spawns are defined as follows.
 The default element specifies where observers and players without a team spawn.  
 `yaw=""` specifies what direction the player is looking horizontally from -180° to 180°. South 0°, East -90°, North 180° and West 90°.  
 
-Multiple spawns from the same team can be grouped inside of a single `<spawns team="team name">` element.
+Multiple spawns from the same team can be grouped inside of a single `<spawns team="team name">` element. Spawn locations are picked randomly, and the plugin does not validate the end location. Spawn regions should be checked to make sure that they don't intersect with any solid objects. Spawn elements accept more that one region or region area, and they don't have to be inside a union element.
 
     <spawns team="blue">
         <!-- Blue Team Spawn A -->
@@ -607,6 +630,24 @@ Of course you will first need to create a region with `name="main-area"` or dire
     <playable>
         <cuboid min="-32,0,33" max="33,20,-32">
     </playable>
+
+
+####[Lanes](id:lanes_S) ~
+
+Lanes are used in CTW style maps with two parallel lanes for the teams. They prevent players from leaving their teams lane and entering the enemies.
+
+Example from [Parallax ![](./images/External-Link.png)](https://maps.oc.tc/Parallax)
+
+    <lanes>
+        <lane team="blue">
+            <region name="blue-lane-total"/>
+            <region name="blue-spawn-rooms"/>
+        </lane>
+        <lane team="red">
+            <region name="red-lane-total"/>
+            <region name="red-spawn-rooms"/>
+        </lane>
+    </lanes>
 
 
 ####[Portals](id:portals_S)
@@ -776,11 +817,4 @@ Copied from: [bukkit docs - Enchantments ![](./images/External-Link.png)](http:/
 
 ### [Go to Top](#pageTop)
 
-*Last edited: January 4, 2013*
-
-
-<br/><br/>
-#### Symbol Information
-`§` Indicates that the previous statement is a logical assumption by the author, and not based on any facts as of when it was written.  
-`§` May also indicate that the author is unclear about how the element, tag or attribute works.  
-`~` Indicates that the section is incomplete or may need a rewrite.
+*Last edited: January 6, 2013*

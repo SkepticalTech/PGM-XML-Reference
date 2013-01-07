@@ -25,7 +25,7 @@
 
 <h4>Game Settings: <a href="#rules_S">Rules</a> | <a href="#kits_S">Kits</a> | <a href="#teams_S">Teams</a> | <a href="#items_S">Items</a> | <a href="#potionEffects_S">Potion Effects</a> | <a href="#repairAndRemove_S">Repair &amp; Remove</a> | <a href="#projectiles_S">Projectiles</a> | <a href="#tnt_S">TNT</a> | <a href="#mobs_S">Mobs</a> | <a href="#other_S">Other Settings</a></h4>
 
-<h4>Regions: <a href="#filters_S">Filters</a> | <a href="#regions_S">Regions</a> | <a href="#spawns_S">Spawns</a> | <a href="#playableRegion_S">Playable Region</a> | <a href="#portals_S">Portals</a></h4>
+<h4>Regions: <a href="#filters_S">Filters</a> | <a href="#regions_S">Regions</a> | <a href="#spawns_S">Spawns</a> | <a href="#playableRegion_S">Playable Region</a> | <a href="#lanes_S">Lanes</a> | <a href="#portals_S">Portals</a></h4>
 
 <h4>Reference: <a href="#inv_S">Inventory</a> | <a href="#colours_S">Colours</a> | <a href="#enchantments_S">Enchantments</a> | <a href="#potions_S">Potions</a></h4>
 
@@ -53,10 +53,12 @@
 
 <h4>Misc notes</h4>
 
+<blockquote><p>Guide is still a WIP, some sections need rewrites to make them clearer.</p></blockquote>
+
 <ul>
 <li>What is XML? <a href="http://www.w3schools.com/xml/xml_whatis.asp">Introduction to XML <img src="./images/External-Link.png" alt="" /></a></li>
+<li>PGM stands for PVP Game Manager.</li>
 <li>A maps XML file is used to specify how the PGM plugin will setup a match, it's useless without the PGM plugin to run it.</li>
-<li>Guide is still a WIP, some sections need rewrites to make them clearer.</li>
 <li>See <a href="https://maps.oc.tc">maps.oc.tc <img src="./images/External-Link.png" alt="" /></a> for XML file examples.</li>
 <li>The XML files should be run through a XML validator before being submitted.</li>
 <li>XML files should also be correctly indented to improve readability.</li>
@@ -75,7 +77,7 @@
 </ul>
 
 
-<h4><span id="ctw_S">Capture the Wool</span> ~</h4>
+<h4><span id="ctw_S">Capture the Wool</span></h4>
 
 <p>Players have to retrieve wool blocks from the enemy teams side of the map and then put them into their victory monument(s). The area a wool has to be placed in is protected by default to prevent it from being blocked with another block.</p>
 
@@ -141,9 +143,9 @@
 &lt;/blitz&gt;
 </code></pre>
 
-<h4><span id="dtc_S">Destroy the Core</span> ~</h4>
+<h4><span id="dtc_S">Destroy the Core</span></h4>
 
-<p>Players have to locate and break the enemy teams core, usually an obsidian sphere filled with lava. The lava has to leak out a certain amount for the game to end. Teams can have more than one core.</p>
+<p>Players have to locate and break the enemy teams core, usually an obsidian sphere filled with lava. The lava has to leak out a certain amount for the game to end. Teams can have more than one core. Cores automatically change from their base material to gold after 15 minutes and glass after 20.</p>
 
 <pre><code>&lt;cores material="obsidian" leak="8"&gt;
     &lt;core team="blue"&gt;&lt;region min="10,15,12" max="12,13,16"/&gt;&lt;/core&gt;
@@ -213,7 +215,7 @@
 
 <h4><span id="teams_S">Teams</span></h4>
 
-<p>Setup the teams, their names and represented colours. See <a href="#colours_S">bukkit colours</a> for valid team colours. The player limit is defined inside of the <code>max=""</code> attribute.</p>
+<p>Setup the teams, their names and represented colours. See <a href="#colours_S">bukkit colours</a> for valid team colours. The player limit is defined inside of the <code>max=""</code> attribute. Teams can have a custom overhead color with the <code>overhead-color=""</code> attribute.</p>
 
 <pre><code>&lt;teams&gt;
    &lt;team color="dark red" max="50"&gt;Red Team&lt;/team&gt;
@@ -309,15 +311,30 @@ The colour is represented in hexadecimal.</p>
 
 <h4><span id="projectiles_S">Projectiles</span></h4>
 
-<p>Projectiles can be modified to shoot a different entity at a custom speed. All entities can be used as defined in the <a href="http://jd.bukkit.org/doxygen/d5/d27/namespaceorg_1_1bukkit_1_1entity.html">bukkit docs - Entity <img src="./images/External-Link.png" alt="" /></a>. However some may not work as expected, crash the server, or look quite ridiculous.</p>
-
 <pre><code>&lt;modifybowprojectile&gt;
     &lt;projectile&gt;EnderPearl&lt;/projectile&gt;
     &lt;velocityMod&gt;2.5&lt;/velocityMod&gt;
 &lt;/modifybowprojectile&gt;
 </code></pre>
 
-<p>The PGM plugin will calculate the damage the projectile does using the same formula as minecraft does for arrows. This means that a flying pig with a velocity of 20 will almost certainly kill you.</p>
+<p>Projectiles can be modified to shoot a different entity at a custom speed. The PGM plugin will calculate the damage the projectile does using the same formula as minecraft does for arrows. This means that a flying fish with a velocity of 40 will almost certainly kill you.</p>
+
+<p>All the following projectiles can be used.</p>
+
+<pre><code>Arrow
+Egg
+EnderPearl
+Fireball
+Fish
+LargeFireball
+SmallFireball
+Snowball
+ThrownExpBottle
+ThrownPotion
+WitherSkull
+</code></pre>
+
+<p>Copied from <a href="http://jd.bukkit.org/dev/apidocs/org/bukkit/entity/Projectile.html">bukkit docs - Projectile <img src="./images/External-Link.png" alt="" /></a></p>
 
 <h4><span id="tnt_S">TNT</span></h4>
 
@@ -341,7 +358,7 @@ The colour is represented in hexadecimal.</p>
 
 &lt;!-- Filter elements --&gt;
 
-&lt;spawn&gt;spawn type&lt;/spawn&gt; &lt;-- spawner, spawner egg, and world? § --&gt;
+&lt;spawn&gt;spawn type&lt;/spawn&gt; &lt;-- spawner &amp; spawner egg --&gt;
 &lt;mob&gt;mob name&lt;/mob&gt;
 &lt;entity&gt;entitiy name&lt;/entity&gt;
 </code></pre>
@@ -385,16 +402,21 @@ The colour is represented in hexadecimal.</p>
 <pre><code>&lt;friendlyfire&gt;on&lt;/friendlyfire&gt; &lt;!-- Defaults to off --&gt;
 </code></pre>
 
+<p>The maps difficulty can be specified from 0 (peaceful) to 3 (hard). If not specified it defaults to the default worlds difficulty. This mainly influences a players food bar.</p>
+
+<pre><code>&lt;difficulty&gt;1&lt;/difficulty&gt;
+</code></pre>
+
 <p><br/><br/></p>
 
-<h3><span id="filters_S">Filters</span></h3>
+<h3><span id="filters_S">Filters</span> ~</h3>
 
 <pre><code>&lt;filters&gt;
     &lt;filter name="no-world" parents="deny-world"&gt;&lt;/filter&gt;
 &lt;/filters&gt;
 </code></pre>
 
-<p>Filters are used to filter player, block and world events in regions. The filter name is used to reference it inside of regions. Filters can inherit filters using the <code>parents=""</code> attribute.</p>
+<p>Filters are used to filter player, block and world events in regions. The filter name is used to reference it inside of regions. On their own filters do nothing, you need to apply them to regions for them to do something. Filters can inherit filters using the <code>parents=""</code> attribute.</p>
 
 <h4>Predefined Filter Parents</h4>
 
@@ -433,13 +455,6 @@ allow-mobs / deny-mobs
 <pre><code>&lt;!-- Exception elements --&gt;
 &lt;team&gt;team name&lt;/team&gt;
 &lt;block&gt;block name&lt;/block&gt;
-</code></pre>
-
-<p>§ Stolen from <a href="https://maps.oc.tc/RFV3/map.xml">RFV3 <img src="./images/External-Link.png" alt="" /></a></p>
-
-<pre><code>&lt;filter name="no-void" parents="allow-all"&gt;
-    &lt;deny&gt;&lt;void/&gt;&lt;/deny&gt;
-&lt;/filter&gt;
 </code></pre>
 
 <p>Example:</p>
@@ -490,7 +505,7 @@ name="name"
 </code></pre>
 
 <p>Regions can be grouped inside of <code>&lt;apply&gt;</code> elements or <a href="#regionCombinations_S">region combination</a> elements.<br/>
-Filters are applied to regions as attributes of the <code>&lt;apply&gt;</code> element.</p>
+Filters and kits are applied to regions as attributes of the <code>&lt;apply&gt;</code> element.</p>
 
 <pre><code>&lt;apply&gt;&lt;region1&gt;..&lt;/apply&gt;
 
@@ -512,8 +527,19 @@ block-place="filter name"
 block-break="filter name"
 &lt;!-- Filter block break events--&gt;
 
+kit="kit name"
+&lt;!-- Give a kit to players entering the region --&gt;
+
 &lt;apply enter="only-blue" message="You may not enter the enemy team's base!"&gt;
     &lt;region name="region name"/&gt;
+&lt;/apply&gt;
+</code></pre>
+
+<p>Example kit region from <a href="https://maps.oc.tc/Anathema/map.xml">Anathema</a>.</p>
+
+<pre><code>&lt;apply kit="knight"&gt;
+    &lt;region name="r-knight"/&gt;
+    &lt;region name="b-knight"/&gt;
 &lt;/apply&gt;
 </code></pre>
 
@@ -621,7 +647,7 @@ This is because PGM checks from the centre of blocks and WE checks from the corn
 <p>The default element specifies where observers and players without a team spawn.<br/>
 <code>yaw=""</code> specifies what direction the player is looking horizontally from -180° to 180°. South 0°, East -90°, North 180° and West 90°.</p>
 
-<p>Multiple spawns from the same team can be grouped inside of a single <code>&lt;spawns team="team name"&gt;</code> element.</p>
+<p>Multiple spawns from the same team can be grouped inside of a single <code>&lt;spawns team="team name"&gt;</code> element. Spawn locations are picked randomly, and the plugin does not validate the end location. Spawn regions should be checked to make sure that they don't intersect with any solid objects. Spawn elements accept more that one region or region area, and they don't have to be inside a union element.</p>
 
 <pre><code>&lt;spawns team="blue"&gt;
     &lt;!-- Blue Team Spawn A --&gt;
@@ -672,6 +698,24 @@ This is because PGM checks from the centre of blocks and WE checks from the corn
 <pre><code>&lt;playable&gt;
     &lt;cuboid min="-32,0,33" max="33,20,-32"&gt;
 &lt;/playable&gt;
+</code></pre>
+
+<h4><span id="lanes_S">Lanes</span> ~</h4>
+
+<p>Lanes are used in CTW style maps with two parallel lanes for the teams. They prevent players from leaving their teams lane and entering the enemies.</p>
+
+<p>Example from <a href="https://maps.oc.tc/Parallax">Parallax <img src="./images/External-Link.png" alt="" /></a></p>
+
+<pre><code>&lt;lanes&gt;
+    &lt;lane team="blue"&gt;
+        &lt;region name="blue-lane-total"/&gt;
+        &lt;region name="blue-spawn-rooms"/&gt;
+    &lt;/lane&gt;
+    &lt;lane team="red"&gt;
+        &lt;region name="red-lane-total"/&gt;
+        &lt;region name="red-spawn-rooms"/&gt;
+    &lt;/lane&gt;
+&lt;/lanes&gt;
 </code></pre>
 
 <h4><span id="portals_S">Portals</span></h4>
@@ -840,15 +884,7 @@ WITHER - Deals damage to an entity over time and gives the health to the shooter
 
 <h3><a href="#pageTop">Go to Top</a></h3>
 
-<p><em>Last edited: January 4, 2013</em></p>
-
-<p><br/><br/></p>
-
-<h4>Symbol Information</h4>
-
-<p><code>§</code> Indicates that the previous statement is a logical assumption by the author, and not based on any facts as of when it was written.<br/>
-<code>§</code> May also indicate that the author is unclear about how the element, tag or attribute works.<br/>
-<code>~</code> Indicates that the section is incomplete or may need a rewrite.</p>
+<p><em>Last edited: January 6, 2013</em></p>
 
 
 </div>

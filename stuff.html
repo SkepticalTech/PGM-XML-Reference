@@ -17,21 +17,28 @@
 <div id="container">
 
 
-<h4>Undocumented Stuff</h4>
+<h4>Notes</h4>
 
 <ul>
-<li><code>Changelog.md</code> Added customizable overhead colours for teams.</li>
-<li><code>Changelog.md</code> Added the Lane module for enforcing lane restrictions on RFW maps. <a href="https://maps.oc.tc/Parallax/map.xml">Example <img src="./images/External-Link.png" alt="" /></a></li>
-<li><code>Changelog.md</code> Added the ability for maps to specify a difficulty they must be run with.</li>
-<li>On <a href="https://maps.oc.tc/Viridun/map.xml">Viridun <img src="./images/External-Link.png" alt="" /></a> <code>&lt;spawn&gt;</code> elements have multiple region areas, shouldn't they be inside of a <code>&lt;union&gt;</code> tag?</li>
-<li>Gold &amp; glass core mode. Is it automatic or are there specific settings? Gold core at 15 minutes, glass at 30.</li>
-<li>With multiple team spawns how does the PGM plugin pick where player spawns?</li>
-<li>Does it validate spawn locations preventing a spawn inside of a block, in thin air, etc?</li>
-<li>Map player limit? 150</li>
-<li>Add config options for post match fireworks. PGM config or XML?</li>
-<li>Add example on how to give kits in a region.</li>
+<li>Maybe add documentation for the <code>&lt;spawns safe="true"&gt;</code> attribute?</li>
+<li><code>TODO:</code> watch a match of Parallax to see how exactly lanes function so I can write a better description.</li>
 </ul>
 
+
+<p>Stolen from <a href="https://maps.oc.tc/RFV3/map.xml">RFV3 <img src="./images/External-Link.png" alt="" /></a> What exactly does this do?</p>
+
+<pre><code>&lt;filter name="no-void" parents="allow-all"&gt;
+    &lt;deny&gt;&lt;void/&gt;&lt;/deny&gt;
+&lt;/filter&gt;
+</code></pre>
+
+<p>Mob spawning <code>&lt;spawn&gt;spawn type&lt;/spawn&gt;</code>. This accepts: spawner, spawner egg, and world?</p>
+
+<h4>Symbol Information</h4>
+
+<p><code>§</code> Indicates that the previous statement is a logical assumption by the author, and not based on any facts as of when it was written.<br/>
+<code>§</code> May also indicate that the author is unclear about how the element, tag or attribute works.<br/>
+<code>~</code> Indicates that the section is incomplete or needs a rewrite.</p>
 
 </div>
 
