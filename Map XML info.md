@@ -817,4 +817,4 @@ Copied from: [bukkit docs - Enchantments ![](./images/External-Link.png)](http:/
 
 ### [Go to Top](#pageTop)
 
-*Last edited: January 6, 2013*
+*Last edited: January 7, 2013*
