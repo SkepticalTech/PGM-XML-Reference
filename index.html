@@ -116,7 +116,7 @@
 
 <h4><span id="dtm_S">Destroy the Monument</span></h4>
 
-<p>Players have to locate and destroy certain objects from the enemy team, such as an obsidian pillar, etc. Teams win after a specified percentage of the enemy teams destroyables are destroyed. Teams can have multiple destroyables and they can be made out of multiple materials. Separate materials with a semicolon <code>;</code>.</p>
+<p>Players have to locate and destroy certain objects from the enemy team, such as an obsidian pillar, etc. Teams win after a specified percentage of the enemy teams destroyables are destroyed. Teams can have multiple destroyables and they can be made out of multiple materials. Multiple materials should be separated with a semicolon <code>;</code>.</p>
 
 <pre><code>&lt;destroyables name="Monument" materials="obsidian" completion="100%"&gt;
     &lt;destroyable owner="blue"&gt;
@@ -192,9 +192,9 @@
 &lt;/rules&gt;
 </code></pre>
 
-<h4><span id="kits_S">Kits</span></h4>
+<h4><span id="kits_S">Kits</span> ~</h4>
 
-<p>Kits are used when spawing and in healing / special item zones. See <a href="#items_S">items</a> for information on how to give items or items with special properties, and <a href="#potionEffects_S">potion effects</a> for information on how to give potion effects. Kits can inherit items from other kits by using the <code>parents=""</code> attribute. Kits are referenced by their <code>name=""</code> from <a href="#spawns_S">spawns</a> and <a href="#regions_S">regions</a>.</p>
+<p>Kits are used when spawning and in healing / special item zones. See <a href="#items_S">items</a> for information on how to give items or items with special properties, and <a href="#potionEffects_S">potion effects</a> for information on how to give potion effects. Kits can inherit items from other kits by using the <code>parents=""</code> attribute. Kits are referenced by their <code>name=""</code> from <a href="#spawns_S">spawns</a> and <a href="#regions_S">regions</a>.</p>
 
 <pre><code>&lt;kits&gt;
     &lt;kit name="spawn"&gt;
@@ -215,7 +215,7 @@
 
 <h4><span id="teams_S">Teams</span></h4>
 
-<p>Setup the teams, their names and represented colours. See <a href="#colours_S">bukkit colours</a> for valid team colours. The player limit is defined inside of the <code>max=""</code> attribute. Teams can have a custom overhead color with the <code>overhead-color=""</code> attribute.</p>
+<p>Setup the teams, their names and represented colours. See <a href="#colours_S">bukkit colours</a> for valid team colours. The player limit for each team is defined inside of the <code>max=""</code> attribute. Teams can have a custom overhead colour with the <code>overhead-color=""</code> attribute.</p>
 
 <pre><code>&lt;teams&gt;
    &lt;team color="dark red" max="50"&gt;Red Team&lt;/team&gt;
@@ -350,9 +350,9 @@ WitherSkull
 &lt;/tnt&gt;
 </code></pre>
 
-<h4><span id="mobs_S">Mob Spawing</span></h4>
+<h4><span id="mobs_S">Mob Spawning</span></h4>
 
-<p>By default PGM disables all mob spawing. Enable specific mob spawning with the <code>&lt;mobs&gt;</code> element, uses special <a href="#filters_S">filters</a> to deny / allow specific mobs and spawn methods. Valid mob names can be found on the <a href="http://jd.bukkit.org/doxygen/da/d7e/enumorg_1_1bukkit_1_1entity_1_1CreatureType.html">bukkit docs - Creature Type</a>.</p>
+<p>By default PGM disables all mob spawning. Enable specific mob spawning with the <code>&lt;mobs&gt;</code> element, uses special <a href="#filters_S">filters</a> to deny / allow specific mobs and spawn methods. Valid mob names can be found on the <a href="http://jd.bukkit.org/doxygen/da/d7e/enumorg_1_1bukkit_1_1entity_1_1CreatureType.html">bukkit docs - Creature Type</a>.</p>
 
 <pre><code>&lt;mobs&gt;&lt;mobs&gt;
 
@@ -360,7 +360,7 @@ WitherSkull
 
 &lt;spawn&gt;spawn type&lt;/spawn&gt; &lt;-- spawner &amp; spawner egg --&gt;
 &lt;mob&gt;mob name&lt;/mob&gt;
-&lt;entity&gt;entitiy name&lt;/entity&gt;
+&lt;entity&gt;entity name&lt;/entity&gt;
 </code></pre>
 
 <p>Examples:</p>
@@ -392,7 +392,7 @@ WitherSkull
 <pre><code>&lt;timelock&gt;on&lt;/timelock&gt;  &lt;!-- Defaults to off --&gt;
 </code></pre>
 
-<p>Set the max build height, this can also be accomplished with the <a href="#playableRegion_S">playable region</a> or a regular <a href="#regions_S">region</a>.</p>
+<p>Set the max build height, this can also be accomplished with the <a href="#playableRegion_S">playable region</a> or a regular <a href="#regions_S">region</a> with a <a href="#filters_S">filter</a>.</p>
 
 <pre><code>&lt;maxbuildheight&gt;38&lt;/maxbuildheight&gt;
 </code></pre>

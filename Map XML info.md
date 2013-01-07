@@ -87,7 +87,7 @@ See [bukkit docs - Dye Colour ![](./images/External-Link.png)](http://jd.bukkit.
 
 ####[Destroy the Monument](id:dtm_S)
 
-Players have to locate and destroy certain objects from the enemy team, such as an obsidian pillar, etc. Teams win after a specified percentage of the enemy teams destroyables are destroyed. Teams can have multiple destroyables and they can be made out of multiple materials. Separate materials with a semicolon `;`.
+Players have to locate and destroy certain objects from the enemy team, such as an obsidian pillar, etc. Teams win after a specified percentage of the enemy teams destroyables are destroyed. Teams can have multiple destroyables and they can be made out of multiple materials. Multiple materials should be separated with a semicolon `;`.
 
     <destroyables name="Monument" materials="obsidian" completion="100%">
         <destroyable owner="blue">
@@ -162,9 +162,9 @@ You can use the `<rules>` element to add custom rules to your map. [Regions](#re
     </rules>
 
 
-####[Kits](id:kits_S)
+####[Kits](id:kits_S) ~
 
-Kits are used when spawing and in healing / special item zones. See [items](#items_S) for information on how to give items or items with special properties, and [potion effects](#potionEffects_S) for information on how to give potion effects. Kits can inherit items from other kits by using the `parents=""` attribute. Kits are referenced by their `name=""` from [spawns](#spawns_S) and [regions](#regions_S).
+Kits are used when spawning and in healing / special item zones. See [items](#items_S) for information on how to give items or items with special properties, and [potion effects](#potionEffects_S) for information on how to give potion effects. Kits can inherit items from other kits by using the `parents=""` attribute. Kits are referenced by their `name=""` from [spawns](#spawns_S) and [regions](#regions_S).
 
 
     <kits>
@@ -185,7 +185,7 @@ In the example above players from blue team will get a blue helmet, players from
 
 ####[Teams](id:teams_S)
 
-Setup the teams, their names and represented colours. See [bukkit colours](#colours_S) for valid team colours. The player limit is defined inside of the `max=""` attribute. Teams can have a custom overhead color with the `overhead-color=""` attribute.
+Setup the teams, their names and represented colours. See [bukkit colours](#colours_S) for valid team colours. The player limit for each team is defined inside of the `max=""` attribute. Teams can have a custom overhead colour with the `overhead-color=""` attribute.
 
     <teams>
        <team color="dark red" max="50">Red Team</team>
@@ -304,8 +304,8 @@ Copied from [bukkit docs - Projectile ![](./images/External-Link.png)](http://jd
     </tnt>
 
 
-####[Mob Spawing](id:mobs_S)
-By default PGM disables all mob spawing. Enable specific mob spawning with the `<mobs>` element, uses special [filters](#filters_S) to deny / allow specific mobs and spawn methods. Valid mob names can be found on the [bukkit docs - Creature Type](http://jd.bukkit.org/doxygen/da/d7e/enumorg_1_1bukkit_1_1entity_1_1CreatureType.html).
+####[Mob Spawning](id:mobs_S)
+By default PGM disables all mob spawning. Enable specific mob spawning with the `<mobs>` element, uses special [filters](#filters_S) to deny / allow specific mobs and spawn methods. Valid mob names can be found on the [bukkit docs - Creature Type](http://jd.bukkit.org/doxygen/da/d7e/enumorg_1_1bukkit_1_1entity_1_1CreatureType.html).
 
     <mobs><mobs>
     
@@ -313,7 +313,7 @@ By default PGM disables all mob spawing. Enable specific mob spawning with the `
     
     <spawn>spawn type</spawn> <-- spawner & spawner egg -->
     <mob>mob name</mob>
-    <entity>entitiy name</entity>
+    <entity>entity name</entity>
 
 Examples:
 
@@ -344,7 +344,7 @@ Lock the time to what the map was saved with. Change the maps time to midnight a
     <timelock>on</timelock>  <!-- Defaults to off -->
 
 
-Set the max build height, this can also be accomplished with the [playable region](#playableRegion_S) or a regular [region](#regions_S).
+Set the max build height, this can also be accomplished with the [playable region](#playableRegion_S) or a regular [region](#regions_S) with a [filter](#filters_S).
 
     <maxbuildheight>38</maxbuildheight>
 
