@@ -1,4 +1,4 @@
-##![](./images/Cabinet.png)[Map XML Reference](id:pageTop)
+##![](./images/logo.png)[Map XML Reference](id:pageTop)
 ***
 
 
