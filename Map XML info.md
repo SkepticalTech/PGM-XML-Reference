@@ -40,6 +40,7 @@
 * The XML files should be run through a XML validator before being submitted.
 * XML files should also be correctly indented to improve readability.
 * Tags that accept a time are in seconds unless suffixed with m, h, etc.
+* To disable void fog & the dark horizon change the maps level.dat generatorName to flat.
 
 
 <br/><br/>
@@ -273,7 +274,7 @@ Defines items that will be deleted when dropped on the map. Also works when item
 
 Projectiles can be modified to shoot a different entity at a custom speed. The PGM plugin will calculate the damage the projectile does using the same formula as minecraft does for arrows. This means that a flying fish with a velocity of 40 will almost certainly kill you.
 
-All the following projectiles can be used.
+All the following projectiles are guaranteed to work. See [mrapple/Bukkit Entity Spawning.md](https://gist.github.com/4617111) for a list of tested entities.
 
     Arrow
     Egg
@@ -817,4 +818,4 @@ Copied from: [bukkit docs - Enchantments ![](./images/External-Link.png)](http:/
 
 ### [Go to Top](#pageTop)
 
-*Last edited: January 7, 2013*
+*Last edited: February 8, 2013*
