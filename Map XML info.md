@@ -493,10 +493,15 @@ This is because PGM checks from the centre of blocks and WE checks from the corn
 For example : `min="49,13,-4" max="37,10,4"` would become `min="50,14,-4" max="37,10,-5"`.
 
 
-####Example regions
+####[Example regions](id:regionExamples_S)
+
+    <filter name="only-blue" parents="deny-players">
+        <allow><team>blue</team></allow>
+    </filter>
 
     <regions>
         <!-- Blue Team Base -->
+        <!-- This cuboid region has the filter named 'only-blue' applied to it. -->
         <apply enter="only-blue" message="You may not enter the enemy team's base!">
             <cuboid min="49,13,4" max="37,10,-4"/>
         </apply>
