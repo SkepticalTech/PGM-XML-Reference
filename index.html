@@ -16,7 +16,6 @@
 
 <div id="container">
 
-
 <h2><img src="./images/logo.png" alt="" /><span id="pageTop">Map XML Reference</span></h2>
 
 <hr />
@@ -551,10 +550,12 @@ To use regions in spawns, portals etc reference them by their name.</p>
 &lt;region name="region name"/&gt;
 </code></pre>
 
-<p><code>TIP:</code> Use the worldedit wand to help in defining regions, select an area and do /size. It will display two 3D coordinates. To use these coordinates you will have to add 1 to the greater axis of the coordinates.<br/>
-This is because PGM checks from the centre of blocks and WE checks from the corners.</p>
+<p><code>TIP:</code> Use the worldedit wand to help in defining regions, select an area and do /size. It will display two 3D coordinates. To use these coordinates you will have to add 1 to the greater axis of the coordinates. In other words; take whichever X value is higher and add 1 to it, and then do the same for Y and Z. This is because PGM checks from the centre of blocks and WE checks from the corners.</p>
 
 <p>For example : <code>min="49,13,-4" max="37,10,4"</code> would become <code>min="50,14,-4" max="37,10,-5"</code>.</p>
+
+<!--![Regions](./images/selections.png)-->
+
 
 <h4><span id="regionExamples_S">Example regions</span></h4>
 
@@ -890,7 +891,7 @@ WITHER - Deals damage to an entity over time and gives the health to the shooter
 
 <h3><a href="#pageTop">Go to Top</a></h3>
 
-<p><em>Last edited: February 8, 2013</em></p>
+<p><em>Last edited: February 23, 2013</em></p>
 
 </div>
 

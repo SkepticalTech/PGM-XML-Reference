@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" style=" height: 100%;">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<link rel="stylesheet" href="./highlight.js/styles/custom.css"/>
+	<link rel="stylesheet" href="./style.css"/>
+	<script src="./highlight.js/highlight.pack.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	<title>
+		Map XML Reference
+	</title>
+</head>
+
+<body>
+
+<div id="container">
+
+<h2><img src="./images/logo.png" alt="" /><span id="pageTop">Example XML</span></h2>
+
+<hr />
+
+<h3>Race For Victory 2 XML</h3>
+
+<pre><code>&lt;?xml version="1.0"?&gt;
+&lt;map proto="1.3.0"&gt;
+&lt;name&gt;Race for Victory 2&lt;/name&gt;
+&lt;version&gt;1.2.4&lt;/version&gt;
+&lt;objective&gt;Take the enemy's wool located to either side of the enemy's base and place it in your victory monument.&lt;/objective&gt;
+&lt;authors&gt;
+    &lt;author contribution="map design"&gt;Plastix&lt;/author&gt;
+    &lt;author contribution="map design"&gt;IM_A_H0B0&lt;/author&gt;
+    &lt;author contribution="map design and gameplay management"&gt;MonsieurApple&lt;/author&gt;
+    &lt;author contribution="map design and item management"&gt;Anxuiz&lt;/author&gt;
+&lt;/authors&gt;
+&lt;rules&gt;
+    &lt;rule&gt;Players may not obstruct the majority of the lane with lava.&lt;/rule&gt;
+    &lt;rule&gt;Players may not use lava to block a team's spawn.&lt;/rule&gt;
+&lt;/rules&gt;
+&lt;teams&gt;
+    &lt;team color="blue" max="32"&gt;Blue Team&lt;/team&gt;
+    &lt;team color="dark red" max="32"&gt;Red Team&lt;/team&gt;
+&lt;/teams&gt;
+&lt;spawns&gt;
+    &lt;spawn team="blue" yaw="0"&gt;&lt;cylinder base="0.5,4,-54.5" radius="2.5" height="0"/&gt;&lt;/spawn&gt;
+    &lt;spawn team="red" yaw="180"&gt;&lt;cylinder base="0.5,4,69.5" radius="2.5" height="0"/&gt;&lt;/spawn&gt;
+    &lt;default yaw="270"&gt;&lt;cylinder base="44.5,8,7.5" radius="4" height="0"/&gt;&lt;/default&gt;
+&lt;/spawns&gt;
+&lt;filters&gt;
+    &lt;filter name="only-blue" parents="deny-players deny-world"&gt;
+        &lt;allow&gt;&lt;team&gt;blue&lt;/team&gt;&lt;/allow&gt;
+    &lt;/filter&gt;
+    &lt;filter name="only-red" parents="deny-players deny-world"&gt;
+        &lt;allow&gt;&lt;team&gt;red&lt;/team&gt;&lt;/allow&gt;
+    &lt;/filter&gt;
+&lt;/filters&gt;
+&lt;regions&gt;
+    &lt;!-- blue wool room protection (these are the wools blue has to get) --&gt;
+    &lt;union name="blue-wool-rooms"&gt;
+        &lt;rectangle name="purple-room" min="5,119" max="17,134"/&gt;
+        &lt;rectangle name="yellow-room" min="-16,119" max="-4,134"/&gt;
+    &lt;/union&gt;
+    &lt;apply block="only-blue" use="only-blue"&gt;
+        &lt;region name="blue-wool-rooms"/&gt;
+    &lt;/apply&gt;
+    &lt;apply enter="only-blue" message="You may not enter your own wool room!"&gt;
+        &lt;region name="blue-wool-rooms"/&gt;
+    &lt;/apply&gt;
+
+    &lt;!-- red wool room protection (these are the wools red has to get) --&gt;
+    &lt;union name="red-wool-rooms"&gt;
+        &lt;rectangle name="orange-room" min="5,-119" max="17,-104"/&gt;
+        &lt;rectangle name="lime-room" min="-16,-119" max="-4,-104"/&gt;
+    &lt;/union&gt;
+    &lt;apply block="only-red" use="only-red"&gt;
+        &lt;region name="red-wool-rooms"/&gt;
+    &lt;/apply&gt;
+    &lt;apply enter="only-red" message="You may not enter your own wool room!"&gt;
+        &lt;region name="red-wool-rooms"/&gt;
+    &lt;/apply&gt;
+
+    &lt;!-- void protection --&gt;
+    &lt;apply block-place="deny-all" message="You may not place blocks in the void!"&gt;
+        &lt;!-- blue side --&gt;
+        &lt;rectangle min="-4,-oo" max="5,-69"/&gt;
+        &lt;rectangle min="17,-oo" max="100,-19"/&gt;
+        &lt;rectangle min="-16,-oo" max="-100,-19"/&gt;
+        &lt;!-- red side --&gt;
+        &lt;rectangle min="-4,84" max="5,oo"/&gt;
+        &lt;rectangle min="-100,34" max="-16,oo"/&gt;
+        &lt;rectangle min="17,34" max="100,oo"/&gt;
+    &lt;/apply&gt;
+
+    &lt;!-- supply room protection --&gt;
+    &lt;apply block="deny-all" message="You may not break or place blocks in the storage room!"&gt;
+        &lt;cuboid name="blue-storage-room" min="-14,0,-65" max="15,9,-41"/&gt;
+        &lt;cuboid name="red-storage-room" min="-14,0,56" max="15,9,80"/&gt;
+    &lt;/apply&gt;
+&lt;/regions&gt;
+&lt;playable&gt;
+    &lt;rectangle min="-24,-127" max="25,142"/&gt;
+&lt;/playable&gt;
+&lt;maxbuildheight&gt;30&lt;/maxbuildheight&gt;
+&lt;wools team="red"&gt;
+    &lt;wool color="orange"&gt;&lt;block&gt;-1,5,78&lt;/block&gt;&lt;/wool&gt;
+    &lt;wool color="lime"&gt;&lt;block&gt;1,5,78&lt;/block&gt;&lt;/wool&gt;
+&lt;/wools&gt;
+&lt;wools team="blue"&gt;
+    &lt;wool color="purple"&gt;&lt;block&gt;-1,5,-64&lt;/block&gt;&lt;/wool&gt;
+    &lt;wool color="yellow"&gt;&lt;block&gt;1,5,-64&lt;/block&gt;&lt;/wool&gt;
+&lt;/wools&gt;
+&lt;itemremove&gt;
+    &lt;item&gt;string&lt;/item&gt;
+    &lt;item&gt;glowstone dust&lt;/item&gt;
+    &lt;item&gt;apple&lt;/item&gt;
+    &lt;item&gt;sapling&lt;/item&gt;
+    &lt;item&gt;sugar cane&lt;/item&gt;
+&lt;/itemremove&gt;
+&lt;/map&gt;
+</code></pre>
+
+<h4>XML Info</h4>
+
+<ul>
+<li>What is XML? <a href="http://www.w3schools.com/xml/xml_whatis.asp">Introduction to XML <img src="./images/External-Link.png" alt="" /></a></li>
+<li>See <a href="https://maps.oc.tc">maps.oc.tc <img src="./images/External-Link.png" alt="" /></a> for XML file examples.</li>
+<li>The XML files should be run through a XML validator before being submitted.</li>
+<li>XML files should also be correctly indented to improve readability.</li>
+</ul>
+
+
+<h3><a href="#pageTop">Go to Top</a></h3>
+
+<p><em>Last edited: February 8, 2013</em></p>
+
+</div>
+
+<footer>
+2013 McSpider<br/>All rights reserved, where applicable.
+</footer>
+
+</body>
+
+</html>
+
