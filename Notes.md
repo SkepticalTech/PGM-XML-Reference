@@ -4,9 +4,17 @@
 * `TODO:` watch a match of Parallax to see how exactly lanes function so I can write a better description.
 * Perhaps follow the [wikipedia writing guide](http://en.wikipedia.org/wiki/Wikipedia:Writing_better_articles) & rewrite the sections that use you or your?
 
-**Commits:**
+**Undocumented Commits & Stuff:**
 
-* `3723a38` Implement a customizable cooldown for scoreboxes (default 1 second). ?
+* `3723a38` Implement a customizable cooldown for scoreboxes (default 1 second).
+* Added the ability to limit scores.
+* Added the ability to specify what dimension a world can be loaded in.
+* Added the health and hunger kits.
+* Implemented a more flexible version of filters / matchers. ???
+* Added the hunger module.
+
+Possobly Documented: 
+* Added the time limit module.
 
 <br/>
 **Other**

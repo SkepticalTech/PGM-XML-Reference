@@ -356,6 +356,13 @@ Change friendly fire, this will allow teammates to shoot each-other, instead of 
 The maps difficulty can be specified from 0 (peaceful) to 3 (hard). If not specified it defaults to the default worlds difficulty. This mainly influences a players food bar.
 
     <difficulty>1</difficulty>
+    
+Specify if a player can starve to death, usually used with the difficulty setting.
+    
+    <hunger>
+        <depletion>off</depletion>
+    </hunger>
+
 
 <br/><br/>
 ###[Filters](id:filters_S) ~
@@ -464,6 +471,9 @@ Filters and kits are applied to regions as attributes of the `<apply>` element.
     
     block-break="filter name"
     <!-- Filter block break events-->
+    
+    use="filter name"
+    <!-- Filter right-click events-->
     
     kit="kit name"
     <!-- Give a kit to players entering the region -->
@@ -585,6 +595,8 @@ Spawns are defined as follows.
 The default element specifies where observers and players without a team spawn.  
 `yaw=""` specifies what direction the player is looking horizontally from -180° to 180°. South 0°, East -90°, North 180° and West 90°.  
 
+`TIP:` You can copy the yaw from the F3 screen in minecraft.  
+
 Multiple spawns from the same team can be grouped inside of a single `<spawns team="team name">` element. Spawn locations are picked randomly, and the plugin does not validate the end location. Spawn regions should be checked to make sure that they don't intersect with any solid objects. Spawn elements accept more that one region or region area, and they don't have to be inside a union element.
 
     <spawns team="blue">
@@ -670,6 +682,8 @@ Position and direction attributes of the `<portal>` element are relative to the 
 
 `yaw=""` specifies what direction the player is looking horizontally from -180° to 180°. South 0°, East -90°, North 180° and West 90°.
 `pitch=""` specifies what direction the player is looking vertically from -90° to 90°. -90° is straight up 90° is straight down.
+
+`TIP:` Copy the yaw and pitch from the F3 screen in minecraft.  
 
 Examples:
 
