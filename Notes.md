@@ -6,7 +6,6 @@
 
 **Undocumented Commits & Stuff:**
 
-* `3723a38` Implement a customizable cooldown for scoreboxes (default 1 second).
 * Added the ability to limit scores.
 * Added the ability to specify what dimension a world can be loaded in.
 * Added the health and hunger kits.
@@ -16,6 +15,8 @@
 Possibly Documented:
 
 * Added the time limit module.
+* `3723a38` Implement a customizable cooldown for scoreboxes (default 1 second).
+
 
 <br/>
 **Other**

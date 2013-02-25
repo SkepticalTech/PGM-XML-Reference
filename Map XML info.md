@@ -142,8 +142,10 @@ Kill scoring works as follows. Killing a player adds 1 point to the killers team
 
 A score box will give the specified team X points when a player from that team enters the [region](#regions_S). [Portals](#portals_S) should be setup to remove the player from the immediate vicinity of the score box to prevent multiple scores.
 
+Specify `cooldown="X"` to limit player scoring, the player can only score again after X amount of seconds have passed. Cooldown defaults to one second.
+
     <score>
-        <box> value="2" team="red" filter="only-red">
+        <box> value="2" team="red" filter="only-red" cooldown="1">
             <cylinder base="21,8,63" radius="1" height="2"/>
         </box>
     </score>

@@ -170,8 +170,10 @@
 
 <p>A score box will give the specified team X points when a player from that team enters the <a href="#regions_S">region</a>. <a href="#portals_S">Portals</a> should be setup to remove the player from the immediate vicinity of the score box to prevent multiple scores.</p>
 
+<p>Specify <code>cooldown="X"</code> to limit player scoring, the player can only score again after X amount of seconds have passed. Cooldown defaults to one second.</p>
+
 <pre><code>&lt;score&gt;
-    &lt;box&gt; value="2" team="red" filter="only-red"&gt;
+    &lt;box&gt; value="2" team="red" filter="only-red" cooldown="1"&gt;
         &lt;cylinder base="21,8,63" radius="1" height="2"/&gt;
     &lt;/box&gt;
 &lt;/score&gt;
@@ -407,6 +409,13 @@ WitherSkull
 <pre><code>&lt;difficulty&gt;1&lt;/difficulty&gt;
 </code></pre>
 
+<p>Specify if a player can starve to death, usually used with the difficulty setting.</p>
+
+<pre><code>&lt;hunger&gt;
+    &lt;depletion&gt;off&lt;/depletion&gt;
+&lt;/hunger&gt;
+</code></pre>
+
 <p><br/><br/></p>
 
 <h3><span id="filters_S">Filters</span> ~</h3>
@@ -527,6 +536,9 @@ block-place="filter name"
 block-break="filter name"
 &lt;!-- Filter block break events--&gt;
 
+use="filter name"
+&lt;!-- Filter right-click events--&gt;
+
 kit="kit name"
 &lt;!-- Give a kit to players entering the region --&gt;
 
@@ -550,7 +562,7 @@ To use regions in spawns, portals etc reference them by their name.</p>
 &lt;region name="region name"/&gt;
 </code></pre>
 
-<p><code>TIP:</code> Use the worldedit wand to help in defining regions, select an area and do /size. It will display two 3D coordinates. To use these coordinates you will have to add 1 to the greater axis of the coordinates. In other words; take whichever X value is higher and add 1 to it, and then do the same for Y and Z. This is because PGM checks from the centre of blocks and WE checks from the corners.</p>
+<p><code>TIP:</code> Use the worldedit wand to help in defining regions, select an area and do /size. It will display two 3D coordinates. To use these coordinates you will have to add 1 to the greater axis of the coordinates. In other words; take whichever X value is higher and add 1 to it, and then do the same for Y and Z. This is because PGM checks from the centre of blocks and WE checks from the corners. You don't have to do this for any elements with just one coordinate such as: <code>&lt;block&gt;</code> or <code>&lt;sphere&gt;</code>.</p>
 
 <p>For example : <code>min="49,13,-4" max="37,10,4"</code> would become <code>min="50,14,-4" max="37,10,-5"</code>.</p>
 
@@ -654,6 +666,8 @@ To use regions in spawns, portals etc reference them by their name.</p>
 <p>The default element specifies where observers and players without a team spawn.<br/>
 <code>yaw=""</code> specifies what direction the player is looking horizontally from -180° to 180°. South 0°, East -90°, North 180° and West 90°.</p>
 
+<p><code>TIP:</code> You can copy the yaw from the F3 screen in minecraft.</p>
+
 <p>Multiple spawns from the same team can be grouped inside of a single <code>&lt;spawns team="team name"&gt;</code> element. Spawn locations are picked randomly, and the plugin does not validate the end location. Spawn regions should be checked to make sure that they don't intersect with any solid objects. Spawn elements accept more that one region or region area, and they don't have to be inside a union element.</p>
 
 <pre><code>&lt;spawns team="blue"&gt;
@@ -741,6 +755,8 @@ To use regions in spawns, portals etc reference them by their name.</p>
 
 <p><code>yaw=""</code> specifies what direction the player is looking horizontally from -180° to 180°. South 0°, East -90°, North 180° and West 90°.
 <code>pitch=""</code> specifies what direction the player is looking vertically from -90° to 90°. -90° is straight up 90° is straight down.</p>
+
+<p><code>TIP:</code> Copy the yaw and pitch from the F3 screen in minecraft.</p>
 
 <p>Examples:</p>
 
