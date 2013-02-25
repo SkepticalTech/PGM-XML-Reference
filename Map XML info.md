@@ -497,7 +497,7 @@ To use regions in spawns, portals etc reference them by their name.
     <region name="region name"/>
 
 
-`TIP:` Use the worldedit wand to help in defining regions, select an area and do /size. It will display two 3D coordinates. To use these coordinates you will have to add 1 to the greater axis of the coordinates. In other words; take whichever X value is higher and add 1 to it, and then do the same for Y and Z. This is because PGM checks from the centre of blocks and WE checks from the corners.
+`TIP:` Use the worldedit wand to help in defining regions, select an area and do /size. It will display two 3D coordinates. To use these coordinates you will have to add 1 to the greater axis of the coordinates. In other words; take whichever X value is higher and add 1 to it, and then do the same for Y and Z. This is because PGM checks from the centre of blocks and WE checks from the corners. You don't have to do this for any elements with just one coordinate such as: `<block>` or `<sphere>`.
 
 For example : `min="49,13,-4" max="37,10,4"` would become `min="50,14,-4" max="37,10,-5"`.
 <!--![Regions](./images/selections.png)-->
