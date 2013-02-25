@@ -704,7 +704,7 @@ Examples:
     <!-- Hypothetical portals-->
     <portals>
         <!-- Moves the player to exactly X:10 Y:8 Z:45, pitch & yaw remain unchanged.-->
-        <portal x="10" y="8" z="45">
+        <portal x="@10" y="@8" z="@45">
             <cuboid min="-56,33,-1" max="-55,35,2"/>
         </portal>
         <!-- Adds 12 to the players Z position, turning them to face east and 10° up.-->
