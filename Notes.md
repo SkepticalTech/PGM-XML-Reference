@@ -4,6 +4,13 @@
 * `TODO:` watch a match of Parallax to see how exactly lanes function so I can write a better description.
 * Perhaps follow the [wikipedia writing guide](http://en.wikipedia.org/wiki/Wikipedia:Writing_better_articles) & rewrite the sections that use you or your?
 
+**Commits:**
+
+* `3723a38` Implement a customizable cooldown for scoreboxes (default 1 second). ?
+
+<br/>
+**Other**
+
 Stolen from [RFV3 ![](./images/External-Link.png)](https://maps.oc.tc/RFV3/map.xml) What exactly does this do?
 
     <filter name="no-void" parents="allow-all">

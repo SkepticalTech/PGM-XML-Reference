@@ -728,8 +728,8 @@ To use regions in spawns, portals etc reference them by their name.</p>
 <h4><span id="portals_S">Portals</span></h4>
 
 <pre><code>&lt;portals&gt;
-    &lt;!-- Offset location, adds X,Y and Z to the players current location --&gt;
-    &lt;portal x="X" y="Y" z="Z" pitch="" yaw="" filter="filter name"&gt;
+    &lt;!-- Offset location, adds X,Y,Z, pitch and yaw to the players current location --&gt;
+    &lt;portal x="X" y="Y" z="Z" pitch="pitch" yaw="yaw" filter="filter name"&gt;
 
         &lt;!-- Portal region, this is the region the player has to enter to be teleported --&gt;
         &lt;cuboid min="X1,Y1,Z1" max="X2,Y2,Z2"&gt;
@@ -737,10 +737,37 @@ To use regions in spawns, portals etc reference them by their name.</p>
 &lt;/portals&gt;
 </code></pre>
 
-<p>Position attributes of the <code>&lt;portal&gt;</code> element are relative to the players location and where they are looking. Prefix values with an at symbol <code>@</code> to specify absolute values. Portals can be restricted to certian teams by defining their <code>filter=""</code> attribute.</p>
+<p>Position and direction attributes of the <code>&lt;portal&gt;</code> element are relative to the players location and where they are looking. Prefix values with an at symbol <code>@</code> to specify absolute values. Portals can be restricted to certain teams by defining their <code>filter=""</code> attribute.</p>
 
 <p><code>yaw=""</code> specifies what direction the player is looking horizontally from -180° to 180°. South 0°, East -90°, North 180° and West 90°.
 <code>pitch=""</code> specifies what direction the player is looking vertically from -90° to 90°. -90° is straight up 90° is straight down.</p>
+
+<p>Examples:</p>
+
+<pre><code>&lt;!-- Portals from Harb --&gt;
+&lt;portals&gt;
+    &lt;!-- Adds 110 to the players X position, Y, Z, pitch &amp; yaw remain unchanged.--&gt;
+    &lt;portal x="110"&gt;
+        &lt;cuboid min="-56,33,-1" max="-55,35,2"/&gt;
+    &lt;/portal&gt;
+    &lt;!-- Subtracts 110 from the players X position, Y, Z, pitch &amp; yaw remain unchanged.--&gt;
+    &lt;portal x="-110"&gt;
+        &lt;cuboid min="56,33,-1" max="57,35,2"/&gt;
+    &lt;/portal&gt;
+&lt;/portals&gt;
+
+&lt;!-- Hypothetical portals--&gt;
+&lt;portals&gt;
+    &lt;!-- Moves the player to exactly X:10 Y:8 Z:45, pitch &amp; yaw remain unchanged.--&gt;
+    &lt;portal x="10" y="8" z="45"&gt;
+        &lt;cuboid min="-56,33,-1" max="-55,35,2"/&gt;
+    &lt;/portal&gt;
+    &lt;!-- Adds 12 to the players Z position, turning them to face east and 10° up.--&gt;
+    &lt;portal z="12" pitch="@10" yaw="@-90"&gt;
+        &lt;cuboid min="-56,33,-1" max="-55,35,2"/&gt;
+    &lt;/portal&gt;
+&lt;/portals&gt;
+</code></pre>
 
 <p><br/></p>
 
@@ -891,7 +918,7 @@ WITHER - Deals damage to an entity over time and gives the health to the shooter
 
 <h3><a href="#pageTop">Go to Top</a></h3>
 
-<p><em>Last edited: February 23, 2013</em></p>
+<p><em>Last edited: February 25, 2013</em></p>
 
 </div>
 

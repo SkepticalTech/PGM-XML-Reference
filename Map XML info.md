@@ -658,18 +658,44 @@ Example from [Parallax ![](./images/External-Link.png)](https://maps.oc.tc/Paral
 ####[Portals](id:portals_S)
 
     <portals>
-        <!-- Offset location, adds X,Y and Z to the players current location -->
-        <portal x="X" y="Y" z="Z" pitch="" yaw="" filter="filter name">
+        <!-- Offset location, adds X,Y,Z, pitch and yaw to the players current location -->
+        <portal x="X" y="Y" z="Z" pitch="pitch" yaw="yaw" filter="filter name">
             
             <!-- Portal region, this is the region the player has to enter to be teleported -->
             <cuboid min="X1,Y1,Z1" max="X2,Y2,Z2">
         </portal>
     </portals>
 
-Position attributes of the `<portal>` element are relative to the players location and where they are looking. Prefix values with an at symbol `@` to specify absolute values. Portals can be restricted to certian teams by defining their `filter=""` attribute.  
+Position and direction attributes of the `<portal>` element are relative to the players location and where they are looking. Prefix values with an at symbol `@` to specify absolute values. Portals can be restricted to certain teams by defining their `filter=""` attribute.  
 
 `yaw=""` specifies what direction the player is looking horizontally from -180° to 180°. South 0°, East -90°, North 180° and West 90°.
 `pitch=""` specifies what direction the player is looking vertically from -90° to 90°. -90° is straight up 90° is straight down.
+
+Examples:
+
+    <!-- Portals from Harb -->
+    <portals>
+        <!-- Adds 110 to the players X position, Y, Z, pitch & yaw remain unchanged.-->
+        <portal x="110">
+            <cuboid min="-56,33,-1" max="-55,35,2"/>
+        </portal>
+        <!-- Subtracts 110 from the players X position, Y, Z, pitch & yaw remain unchanged.-->
+        <portal x="-110">
+            <cuboid min="56,33,-1" max="57,35,2"/>
+        </portal>
+    </portals>
+
+    <!-- Hypothetical portals-->
+    <portals>
+        <!-- Moves the player to exactly X:10 Y:8 Z:45, pitch & yaw remain unchanged.-->
+        <portal x="10" y="8" z="45">
+            <cuboid min="-56,33,-1" max="-55,35,2"/>
+        </portal>
+        <!-- Adds 12 to the players Z position, turning them to face east and 10° up.-->
+        <portal z="12" pitch="@10" yaw="@-90">
+            <cuboid min="-56,33,-1" max="-55,35,2"/>
+        </portal>
+    </portals>
 
 
 <br/>
@@ -822,4 +848,4 @@ Copied from: [bukkit docs - Enchantments ![](./images/External-Link.png)](http:/
 
 ### [Go to Top](#pageTop)
 
-*Last edited: February 23, 2013*  
+*Last edited: February 25, 2013*  
