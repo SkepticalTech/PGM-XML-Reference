@@ -13,7 +13,8 @@
 * Implemented a more flexible version of filters / matchers. ???
 * Added the hunger module.
 
-Possobly Documented: 
+Possibly Documented:
+
 * Added the time limit module.
 
 <br/>
