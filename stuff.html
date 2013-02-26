@@ -28,11 +28,20 @@
 <p><strong>Undocumented Commits &amp; Stuff:</strong></p>
 
 <ul>
-<li>Added the ability to limit scores.</li>
+<li><code>af0349</code> Allow velocity to be set when entering regions.</li>
 <li>Added the ability to specify what dimension a world can be loaded in.</li>
-<li>Added the health and hunger kits.</li>
-<li>Implemented a more flexible version of filters / matchers. ???</li>
-<li>Added the hunger module.</li>
+<li><p>Score <code>&lt;limit&gt;</code> and <code>&lt;death&gt;</code> subelement. ???<br/>
+<code>&lt;death&gt;</code> element specifies the score amount added/subtracted for kills/deaths.
+<code>&lt;limit&gt;</code> limits the score, when a team (player?) reaches this score the game ends.</p></li>
+<li><p>Added the health and hunger kits.</p></li>
+
+<pre><code>&lt;!--  Min and max values? --&gt;
+&lt;health&gt;20&lt;/health&gt;
+&lt;saturation&gt;20&lt;/saturation&gt;
+&lt;foodlevel&gt;20&lt;/foodlevel&gt;
+</code></pre>
+<li><p>Added the hunger module.<br/>
+<code>&lt;hunger&gt;</code> Does it have a <code>depletion</code> subelement?</p></li>
 </ul>
 
 
@@ -41,6 +50,7 @@
 <ul>
 <li>Added the time limit module.</li>
 <li><code>3723a38</code> Implement a customizable cooldown for scoreboxes (default 1 second).</li>
+<li>Added the ability to limit scores.</li>
 </ul>
 
 

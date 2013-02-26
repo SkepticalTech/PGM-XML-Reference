@@ -22,7 +22,7 @@
 
 <h4>Game Modes: <a href="#ctw_S">Capture the Wool</a> | <a href="#dtm_S">Destroy the Monument</a> | <a href="#blitz_S">Blitz</a> | <a href="#dtc_S">Destroy the Core</a> | <a href="#tdm_S">Team Death-match</a> | <a href="#score_S">Score Boxes</a></h4>
 
-<h4>Game Settings: <a href="#rules_S">Rules</a> | <a href="#kits_S">Kits</a> | <a href="#teams_S">Teams</a> | <a href="#items_S">Items</a> | <a href="#potionEffects_S">Potion Effects</a> | <a href="#repairAndRemove_S">Repair &amp; Remove</a> | <a href="#projectiles_S">Projectiles</a> | <a href="#tnt_S">TNT</a> | <a href="#mobs_S">Mobs</a> | <a href="#other_S">Other Settings</a></h4>
+<h4>Game Settings: <a href="#rules_S">Rules</a> | <a href="#teams_S">Teams</a> | <a href="#kits_S">Kits</a> | <a href="#items_S">Items</a> | <a href="#potionEffects_S">Potion Effects</a> | <a href="#repairAndRemove_S">Repair &amp; Remove</a> | <a href="#projectiles_S">Projectiles</a> | <a href="#tnt_S">TNT</a> | <a href="#mobs_S">Mobs</a> | <a href="#other_S">Other Settings</a></h4>
 
 <h4>Regions: <a href="#filters_S">Filters</a> | <a href="#regions_S">Regions</a> | <a href="#spawns_S">Spawns</a> | <a href="#playableRegion_S">Playable Region</a> | <a href="#lanes_S">Lanes</a> | <a href="#portals_S">Portals</a></h4>
 
@@ -61,7 +61,6 @@
 <li>See <a href="https://maps.oc.tc">maps.oc.tc <img src="./images/External-Link.png" alt="" /></a> for XML file examples.</li>
 <li>The XML files should be run through a XML validator before being submitted.</li>
 <li>XML files should also be correctly indented to improve readability.</li>
-<li>Tags that accept a time are in seconds unless suffixed with m, h, etc.</li>
 <li>To disable void fog &amp; the dark horizon change the maps level.dat generatorName to flat.</li>
 </ul>
 
@@ -134,6 +133,8 @@
 
 <p>The game will run for a specified amount of time, players will have to find and kill enemy players. Each player has a limited amount of lives, and after they are used up the player is moved to the observer team. The match ends after the specified amount of time, or when one team is eliminated. If the match timer ends before a team is eliminated the team with the most players remaining wins.</p>
 
+<p><a href="#timeFormatter_S">Time Formatters</a></p>
+
 <pre><code>&lt;blitz&gt;
     &lt;!-- Time till the match ends in minutes --&gt;
     &lt;time&gt;10m&lt;/time&gt;        
@@ -158,9 +159,14 @@
 
 <p>Game will run for a specified amount of time and then the team with the highest score wins. Teams increase their score by killing players from the other team or capturing points from a <a href="#scorebox_S">score box</a>.</p>
 
+<p><a href="#timeFormatter_S">Time Formatters</a></p>
+
 <pre><code>&lt;score&gt;
     &lt;!-- Time till the match ends in seconds --&gt;    
     &lt;time&gt;600&lt;/time&gt;
+
+    &lt;!-- Game ends when a player reaches this score, defaults to -1. --&gt;
+    &lt;limit&gt;-1&lt;/limit&gt;
 &lt;/score&gt;
 </code></pre>
 
@@ -194,6 +200,18 @@
 &lt;/rules&gt;
 </code></pre>
 
+<h4><span id="teams_S">Teams</span></h4>
+
+<p>Setup the teams, their names and represented colours. See <a href="#colours_S">bukkit colours</a> for valid team colours. The player limit for each team is defined inside of the <code>max=""</code> attribute. Teams can have a custom overhead colour with the <code>overhead-color=""</code> attribute.</p>
+
+<pre><code>&lt;teams&gt;
+   &lt;team color="dark red" max="50"&gt;Red Team&lt;/team&gt;
+   &lt;team color="blue" max="50"&gt;Blue Team&lt;/team&gt;
+&lt;/teams&gt;
+</code></pre>
+
+<p>Don't forget that the total maximum number of players in the above example is 100. Maps currently have a player limit of 150, so 100 players in total would allow 50 observers.</p>
+
 <h4><span id="kits_S">Kits</span> ~</h4>
 
 <p>Kits are used when spawning and in healing / special item zones. See <a href="#items_S">items</a> for information on how to give items or items with special properties, and <a href="#potionEffects_S">potion effects</a> for information on how to give potion effects. Kits can inherit items from other kits by using the <code>parents=""</code> attribute. Kits are referenced by their <code>name=""</code> from <a href="#spawns_S">spawns</a> and <a href="#regions_S">regions</a>.</p>
@@ -214,18 +232,6 @@
 </code></pre>
 
 <p>In the example above players from blue team will get a blue helmet, players from red team will get a red helmet; both teams will get the items from the spawn kit. The spawn kit contains a 5 second healing <a href="#potionEffects_S">potion effect</a> to help prevent spawn killing.</p>
-
-<h4><span id="teams_S">Teams</span></h4>
-
-<p>Setup the teams, their names and represented colours. See <a href="#colours_S">bukkit colours</a> for valid team colours. The player limit for each team is defined inside of the <code>max=""</code> attribute. Teams can have a custom overhead colour with the <code>overhead-color=""</code> attribute.</p>
-
-<pre><code>&lt;teams&gt;
-   &lt;team color="dark red" max="50"&gt;Red Team&lt;/team&gt;
-   &lt;team color="blue" max="50"&gt;Blue Team&lt;/team&gt;
-&lt;/teams&gt;
-</code></pre>
-
-<p>Don't forget that the total maximum number of players in the above example is 100. Maps currently have a player limit of 150, so 100 players in total would allow 50 observers.</p>
 
 <h4><span id="items_S">Items</span></h4>
 
@@ -356,7 +362,7 @@ WitherSkull
 
 <p>By default PGM disables all mob spawning. Enable specific mob spawning with the <code>&lt;mobs&gt;</code> element, uses special <a href="#filters_S">filters</a> to deny / allow specific mobs and spawn methods. Valid mob names can be found on the <a href="http://jd.bukkit.org/doxygen/da/d7e/enumorg_1_1bukkit_1_1entity_1_1CreatureType.html">bukkit docs - Creature Type</a>.</p>
 
-<pre><code>&lt;mobs&gt;&lt;mobs&gt;
+<pre><code>&lt;mobs&gt;&lt;/mobs&gt;
 
 &lt;!-- Filter elements --&gt;
 
@@ -409,12 +415,14 @@ WitherSkull
 <pre><code>&lt;difficulty&gt;1&lt;/difficulty&gt;
 </code></pre>
 
-<p>Specify if a player can starve to death, usually used with the difficulty setting.</p>
+<!--
+Specify if a player can starve to death, usually used with the difficulty setting.
+    
+    <hunger>
+        <depletion>off</depletion>
+    </hunger>
+-->
 
-<pre><code>&lt;hunger&gt;
-    &lt;depletion&gt;off&lt;/depletion&gt;
-&lt;/hunger&gt;
-</code></pre>
 
 <p><br/><br/></p>
 
@@ -799,6 +807,16 @@ To use regions in spawns, portals etc reference them by their name.</p>
 
 <p>List of item names: <a href="http://jd.bukkit.org/apidocs/org/bukkit/Material.html">bukkit docs - Material <img src="./images/External-Link.png" alt="" /></a></p>
 
+<h4><span id="timeFormatter_S">Time Formatters</span></h4>
+
+<pre><code>y Year
+mo Month
+d Day
+h Hour
+m Minute
+s Seconds &lt;!-- Time values with no formatter default to seconds. --&gt;
+</code></pre>
+
 <h4><span id="colours_S">Colours</span></h4>
 
 <pre><code>0 BLACK
@@ -819,7 +837,7 @@ e YELLOW
 f WHITE        
 </code></pre>
 
-<h4>Formatting Codes</h4>
+<h5>Formatting Codes</h5>
 
 <pre><code>k MAGIC
 l BOLD
