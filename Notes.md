@@ -22,6 +22,7 @@
 * Added the hunger module.  
 `<hunger>` Does it have a `depletion` subelement?
 
+* Filter `<void>` `<not>` `<one>` `<all>` and `<any>` elements.
 
 
 Possibly Documented:
@@ -40,8 +41,6 @@ Stolen from [RFV3 ![](./images/External-Link.png)](https://maps.oc.tc/RFV3/map.x
         <deny><void/></deny>
     </filter>
 
-
-Mob spawning `<spawn>spawn type</spawn>`. This accepts: spawner, spawner egg, and world?
 
 
 #### Symbol Information

@@ -45,7 +45,7 @@
 <br/><br/>
 ###[Game Modes](id:gameModes_S)
 
-All game modes are compatible with each other except for Blitz, it will not work with any other game mode. For example you can mix `<wools>` and `<destroyables>` however all objectives have to be completed for the match to end. It is common for maps to only have 2 teams, although more are possible it usually just causes confusion.
+All game modes are compatible with each other except for Blitz, it will not work with any other game mode. For example you can mix `<wools>` and `<destroyables>` however all objectives have to be completed for the match to end.
 
 * Use common sense when mixing game modes.
 
@@ -173,7 +173,9 @@ You can use the `<rules>` element to add custom rules to your map. [Regions](#re
 
 ####[Teams](id:teams_S)
 
-Setup the teams, their names and represented colours. See [bukkit colours](#colours_S) for valid team colours. The player limit for each team is defined inside of the `max=""` attribute. Teams can have a custom overhead colour with the `overhead-color=""` attribute.
+Setup the teams, their names and represented colours. See [bukkit colours](#colours_S) for valid team colours. The player limit for each team is defined inside of the `max=""` attribute. Teams can have a custom overhead colour with the `overhead-color=""` attribute.  
+
+`NOTE:` It is common for maps to only have 2 teams, although more are possible it usually just causes confusion.
 
     <teams>
        <team color="dark red" max="50">Red Team</team>
@@ -315,13 +317,16 @@ Copied from [bukkit docs - Projectile ![](./images/External-Link.png)](http://jd
 
 
 ####[Mob Spawning](id:mobs_S)
-By default PGM disables all mob spawning. Enable specific mob spawning with the `<mobs>` element, uses special [filters](#filters_S) to deny / allow specific mobs and spawn methods. Valid mob names can be found on the [bukkit docs - Creature Type](http://jd.bukkit.org/doxygen/da/d7e/enumorg_1_1bukkit_1_1entity_1_1CreatureType.html).
+By default PGM disables all mob spawning. Enable specific mob spawning with the `<mobs>` element, uses special [filters](#filters_S) to deny / allow specific mobs and spawn methods.
+
+Valid mob names can be found on the [bukkit docs - Creature Type](http://jd.bukkit.org/doxygen/da/d7e/enumorg_1_1bukkit_1_1entity_1_1CreatureType.html).  
+Spawn reasons can be found here: [bukkit docs - Spawn Reason](http://jd.bukkit.org/rb/doxygen/d6/d38/enumorg_1_1bukkit_1_1event_1_1entity_1_1CreatureSpawnEvent_1_1SpawnReason.html).
 
     <mobs></mobs>
     
     <!-- Filter elements -->
     
-    <spawn>spawn type</spawn> <-- spawner & spawner egg -->
+    <spawn>spawn reason</spawn>
     <mob>mob name</mob>
     <entity>entity name</entity>
 
