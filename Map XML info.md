@@ -3,7 +3,7 @@
 
 
 #### Game Modes: [Capture the Wool](#ctw_S) | [Destroy the Monument](#dtm_S) | [Blitz](#blitz_S) | [Destroy the Core](#dtc_S) | [Team Death-match](#tdm_S) | [Score Boxes](#score_S)
-#### Game Settings: [Rules](#rules_S) | [Kits](#kits_S) | [Teams](#teams_S) | [Items](#items_S) | [Potion Effects](#potionEffects_S) | [Repair & Remove](#repairAndRemove_S) | [Projectiles](#projectiles_S) | [TNT](#tnt_S) | [Mobs](#mobs_S) | [Other Settings](#other_S)
+#### Game Settings: [Rules](#rules_S) | [Teams](#teams_S) | [Kits](#kits_S) | [Items](#items_S) | [Potion Effects](#potionEffects_S) | [Repair & Remove](#repairAndRemove_S) | [Projectiles](#projectiles_S) | [TNT](#tnt_S) | [Mobs](#mobs_S) | [Other Settings](#other_S)
 #### Regions: [Filters](#filters_S) | [Regions](#regions_S) | [Spawns](#spawns_S) | [Playable Region](#playableRegion_S) | [Lanes](#lanes_S) | [Portals](#portals_S)
 #### Reference: [Inventory](#inv_S) | [Colours](#colours_S) | [Enchantments](#enchantments_S) | [Potions](#potions_S)
 <br/>
@@ -39,7 +39,6 @@
 * See [maps.oc.tc ![](./images/External-Link.png)](https://maps.oc.tc) for XML file examples.
 * The XML files should be run through a XML validator before being submitted.
 * XML files should also be correctly indented to improve readability.
-* Tags that accept a time are in seconds unless suffixed with m, h, etc.
 * To disable void fog & the dark horizon change the maps level.dat generatorName to flat.
 
 
@@ -106,6 +105,8 @@ Completion specifies how much of the material inside of the region must be remov
 
 The game will run for a specified amount of time, players will have to find and kill enemy players. Each player has a limited amount of lives, and after they are used up the player is moved to the observer team. The match ends after the specified amount of time, or when one team is eliminated. If the match timer ends before a team is eliminated the team with the most players remaining wins.
 
+[Time Formatters](#timeFormatter_S)
+
     <blitz>
         <!-- Time till the match ends in minutes -->
         <time>10m</time>        
@@ -130,9 +131,14 @@ Leak specifies how far the lava / water in the core has to leak out for the game
 
 Game will run for a specified amount of time and then the team with the highest score wins. Teams increase their score by killing players from the other team or capturing points from a [score box](#scorebox_S).
 
+[Time Formatters](#timeFormatter_S)
+
     <score>
         <!-- Time till the match ends in seconds -->    
         <time>600</time>
+                
+        <!-- Game ends when a player reaches this score, defaults to -1. -->
+        <limit>-1</limit>
     </score>
     
 Kill scoring works as follows. Killing a player adds 1 point to the killers team score, kills from environmental damage such as lava or the void subtract 1 point from the dying players team score.
@@ -165,6 +171,18 @@ You can use the `<rules>` element to add custom rules to your map. [Regions](#re
     </rules>
 
 
+####[Teams](id:teams_S)
+
+Setup the teams, their names and represented colours. See [bukkit colours](#colours_S) for valid team colours. The player limit for each team is defined inside of the `max=""` attribute. Teams can have a custom overhead colour with the `overhead-color=""` attribute.
+
+    <teams>
+       <team color="dark red" max="50">Red Team</team>
+       <team color="blue" max="50">Blue Team</team>
+    </teams>
+
+Don't forget that the total maximum number of players in the above example is 100. Maps currently have a player limit of 150, so 100 players in total would allow 50 observers.
+
+
 ####[Kits](id:kits_S) ~
 
 Kits are used when spawning and in healing / special item zones. See [items](#items_S) for information on how to give items or items with special properties, and [potion effects](#potionEffects_S) for information on how to give potion effects. Kits can inherit items from other kits by using the `parents=""` attribute. Kits are referenced by their `name=""` from [spawns](#spawns_S) and [regions](#regions_S).
@@ -185,17 +203,6 @@ Kits are used when spawning and in healing / special item zones. See [items](#it
     </kits>
 
 In the example above players from blue team will get a blue helmet, players from red team will get a red helmet; both teams will get the items from the spawn kit. The spawn kit contains a 5 second healing [potion effect](#potionEffects_S) to help prevent spawn killing.
-
-####[Teams](id:teams_S)
-
-Setup the teams, their names and represented colours. See [bukkit colours](#colours_S) for valid team colours. The player limit for each team is defined inside of the `max=""` attribute. Teams can have a custom overhead colour with the `overhead-color=""` attribute.
-
-    <teams>
-       <team color="dark red" max="50">Red Team</team>
-       <team color="blue" max="50">Blue Team</team>
-    </teams>
-
-Don't forget that the total maximum number of players in the above example is 100. Maps currently have a player limit of 150, so 100 players in total would allow 50 observers.
 
 
 ####[Items](id:items_S)
@@ -310,7 +317,7 @@ Copied from [bukkit docs - Projectile ![](./images/External-Link.png)](http://jd
 ####[Mob Spawning](id:mobs_S)
 By default PGM disables all mob spawning. Enable specific mob spawning with the `<mobs>` element, uses special [filters](#filters_S) to deny / allow specific mobs and spawn methods. Valid mob names can be found on the [bukkit docs - Creature Type](http://jd.bukkit.org/doxygen/da/d7e/enumorg_1_1bukkit_1_1entity_1_1CreatureType.html).
 
-    <mobs><mobs>
+    <mobs></mobs>
     
     <!-- Filter elements -->
     
@@ -359,12 +366,13 @@ The maps difficulty can be specified from 0 (peaceful) to 3 (hard). If not speci
 
     <difficulty>1</difficulty>
     
+<!--
 Specify if a player can starve to death, usually used with the difficulty setting.
     
     <hunger>
         <depletion>off</depletion>
     </hunger>
-
+-->
 
 <br/><br/>
 ###[Filters](id:filters_S) ~
@@ -726,6 +734,15 @@ Examples:
 List of item names: [bukkit docs - Material ![](./images/External-Link.png)](http://jd.bukkit.org/apidocs/org/bukkit/Material.html)
 
 
+####[Time Formatters](id:timeFormatter_S)
+
+    y Year
+    mo Month
+    d Day
+    h Hour
+    m Minute
+    s Seconds <!-- Time values with no formatter default to seconds. -->
+
 ####[Colours](id:colours_S)
 
     0 BLACK
@@ -746,7 +763,7 @@ List of item names: [bukkit docs - Material ![](./images/External-Link.png)](htt
     f WHITE        
 
 
-#### Formatting Codes
+##### Formatting Codes
 
     k MAGIC
     l BOLD
