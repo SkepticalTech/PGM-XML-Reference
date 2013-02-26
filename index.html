@@ -69,7 +69,7 @@
 
 <h3><span id="gameModes_S">Game Modes</span></h3>
 
-<p>All game modes are compatible with each other except for Blitz, it will not work with any other game mode. For example you can mix <code>&lt;wools&gt;</code> and <code>&lt;destroyables&gt;</code> however all objectives have to be completed for the match to end. It is common for maps to only have 2 teams, although more are possible it usually just causes confusion.</p>
+<p>All game modes are compatible with each other except for Blitz, it will not work with any other game mode. For example you can mix <code>&lt;wools&gt;</code> and <code>&lt;destroyables&gt;</code> however all objectives have to be completed for the match to end.</p>
 
 <ul>
 <li>Use common sense when mixing game modes.</li>
@@ -203,6 +203,8 @@
 <h4><span id="teams_S">Teams</span></h4>
 
 <p>Setup the teams, their names and represented colours. See <a href="#colours_S">bukkit colours</a> for valid team colours. The player limit for each team is defined inside of the <code>max=""</code> attribute. Teams can have a custom overhead colour with the <code>overhead-color=""</code> attribute.</p>
+
+<p><code>NOTE:</code> It is common for maps to only have 2 teams, although more are possible it usually just causes confusion.</p>
 
 <pre><code>&lt;teams&gt;
    &lt;team color="dark red" max="50"&gt;Red Team&lt;/team&gt;
@@ -360,13 +362,16 @@ WitherSkull
 
 <h4><span id="mobs_S">Mob Spawning</span></h4>
 
-<p>By default PGM disables all mob spawning. Enable specific mob spawning with the <code>&lt;mobs&gt;</code> element, uses special <a href="#filters_S">filters</a> to deny / allow specific mobs and spawn methods. Valid mob names can be found on the <a href="http://jd.bukkit.org/doxygen/da/d7e/enumorg_1_1bukkit_1_1entity_1_1CreatureType.html">bukkit docs - Creature Type</a>.</p>
+<p>By default PGM disables all mob spawning. Enable specific mob spawning with the <code>&lt;mobs&gt;</code> element, uses special <a href="#filters_S">filters</a> to deny / allow specific mobs and spawn methods.</p>
+
+<p>Valid mob names can be found on the <a href="http://jd.bukkit.org/doxygen/da/d7e/enumorg_1_1bukkit_1_1entity_1_1CreatureType.html">bukkit docs - Creature Type</a>.<br/>
+Spawn reasons can be found here: <a href="http://jd.bukkit.org/rb/doxygen/d6/d38/enumorg_1_1bukkit_1_1event_1_1entity_1_1CreatureSpawnEvent_1_1SpawnReason.html">bukkit docs - Spawn Reason</a>.</p>
 
 <pre><code>&lt;mobs&gt;&lt;/mobs&gt;
 
 &lt;!-- Filter elements --&gt;
 
-&lt;spawn&gt;spawn type&lt;/spawn&gt; &lt;-- spawner &amp; spawner egg --&gt;
+&lt;spawn&gt;spawn reason&lt;/spawn&gt;
 &lt;mob&gt;mob name&lt;/mob&gt;
 &lt;entity&gt;entity name&lt;/entity&gt;
 </code></pre>
