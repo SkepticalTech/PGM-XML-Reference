@@ -137,7 +137,7 @@ Game will run for a specified amount of time and then the team with the highest 
         <!-- Time till the match ends in seconds -->    
         <time>600</time>
                 
-        <!-- Game ends when a player reaches this score, defaults to -1. -->
+        <!-- Game ends when a team reaches this score, defaults to -1 i.e. no limit. -->
         <limit>-1</limit>
     </score>
     
@@ -332,7 +332,7 @@ Spawn reasons can be found here: [bukkit docs - Spawn Reason](http://jd.bukkit.o
 
 Examples:
 
-    <!-- Allow mobs to spawn from monster spawners. -->
+    <!-- Only allow mobs to spawn from monster spawners. -->
     <mobs>
         <filter>
             <spawn>spawner</spawn>
@@ -344,7 +344,7 @@ Examples:
     <mobs>
         <filter parents="deny-all">
             <allow>
-                <!-- Allow cave spiders to be spawned with spawn eggs -->
+                <!-- Only allow cave spiders to be spawned with spawn eggs -->
                 <mob>cave spider</mob>
                 <spawn>spawner egg</spawn>
             </allow>
