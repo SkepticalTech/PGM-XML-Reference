@@ -165,7 +165,7 @@
     &lt;!-- Time till the match ends in seconds --&gt;    
     &lt;time&gt;600&lt;/time&gt;
 
-    &lt;!-- Game ends when a player reaches this score, defaults to -1. --&gt;
+    &lt;!-- Game ends when a team reaches this score, defaults to -1 i.e. no limit. --&gt;
     &lt;limit&gt;-1&lt;/limit&gt;
 &lt;/score&gt;
 </code></pre>
@@ -378,7 +378,7 @@ Spawn reasons can be found here: <a href="http://jd.bukkit.org/rb/doxygen/d6/d38
 
 <p>Examples:</p>
 
-<pre><code>&lt;!-- Allow mobs to spawn from monster spawners. --&gt;
+<pre><code>&lt;!-- Only allow mobs to spawn from monster spawners. --&gt;
 &lt;mobs&gt;
     &lt;filter&gt;
         &lt;spawn&gt;spawner&lt;/spawn&gt;
@@ -390,7 +390,7 @@ Spawn reasons can be found here: <a href="http://jd.bukkit.org/rb/doxygen/d6/d38
 &lt;mobs&gt;
     &lt;filter parents="deny-all"&gt;
         &lt;allow&gt;
-            &lt;!-- Allow cave spiders to be spawned with spawn eggs --&gt;
+            &lt;!-- Only allow cave spiders to be spawned with spawn eggs --&gt;
             &lt;mob&gt;cave spider&lt;/mob&gt;
             &lt;spawn&gt;spawner egg&lt;/spawn&gt;
         &lt;/allow&gt;
