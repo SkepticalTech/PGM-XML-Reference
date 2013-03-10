@@ -498,7 +498,7 @@ allow-mobs / deny-mobs
 
 <h3><span id="regions_S">Regions</span> ~</h3>
 
-<p>The area a region applies too is specified with one or more of the following elements. Use <code>oo</code> to specify infinity in coordinates.</p>
+<p>The area a region applies too is specified with one or more of the following elements. Use <code>oo</code> and <code>-oo</code> to specify positive/negative infinity in coordinates.</p>
 
 <pre><code>&lt;!-- Note that Y is the up/down axis in minecraft --&gt;
 
@@ -676,12 +676,14 @@ To use regions in spawns, portals etc reference them by their name.</p>
 &lt;/spawns&gt;
 </code></pre>
 
-<p>The default element specifies where observers and players without a team spawn.<br/>
+<p>The default element specifies where observers and players without a team spawn. There should only be a single default spawn.<br/>
 <code>yaw=""</code> specifies what direction the player is looking horizontally from -180° to 180°. South 0°, East -90°, North 180° and West 90°.</p>
 
 <p><code>TIP:</code> You can copy the yaw from the F3 screen in minecraft.</p>
 
-<p>Multiple spawns from the same team can be grouped inside of a single <code>&lt;spawns team="team name"&gt;</code> element. Spawn locations are picked randomly, and the plugin does not validate the end location. Spawn regions should be checked to make sure that they don't intersect with any solid objects. Spawn elements accept more that one region or region area, and they don't have to be inside a union element.</p>
+<p>Multiple spawns from the same team can be grouped inside of a single <code>&lt;spawns team="team name"&gt;</code> element. Spawn positions are picked randomly inside of the defined regions. The plugin will not validate the spawn position by default. Regions should be checked to make sure that they don't intersect with solid objects or are midair. Spawns can also be defined with the <code>safe="true"</code> attribute, PGM will then check that the player spawns on a solid object and not midair.</p>
+
+<p>Spawn elements accept more that one region or region area. If they are not inside a <code>&lt;union&gt;</code> element one region will be picked at random for each spawn event.</p>
 
 <pre><code>&lt;spawns team="blue"&gt;
     &lt;!-- Blue Team Spawn A --&gt;
@@ -700,21 +702,21 @@ To use regions in spawns, portals etc reference them by their name.</p>
     &lt;/spawn&gt;
 &lt;/spawns&gt;
 
-&lt;spawns team="red"&gt;
-    &lt;!-- Red Team Spawn A --&gt;
-    &lt;spawn yaw="270"&gt;
-        &lt;cuboid min="-56,4,55" max="-58,4,57"/&gt;
-    &lt;/spawn&gt;
-    &lt;spawn yaw="180"&gt;
-        &lt;cuboid min="-64,4,49" max="-62,4,51"/&gt;
-    &lt;/spawn&gt;
-    &lt;!-- Red Team Spawn B --&gt;
-    &lt;spawn yaw="180"&gt;
-        &lt;cuboid min="63,4,49" max="65,4,51"/&gt;
-    &lt;/spawn&gt;
-    &lt;spawn yaw="90"&gt;
-        &lt;cuboid min="57,4,57" max="59,4,55"/&gt;
-    &lt;/spawn&gt;
+&lt;!-- Example spawn from Harb--&gt;
+&lt;spawns&gt;
+    &lt;spawns safe="true"&gt;
+        &lt;spawn team="blue" kit="blue" yaw="0"&gt;
+            &lt;cuboid min="-15,32,-57" max="16,42,-32"/&gt;
+            &lt;point&gt;0.5,33,-47.5&lt;/point&gt;
+        &lt;/spawn&gt;
+        &lt;spawn team="red" kit="red" yaw="180"&gt;
+            &lt;cuboid min="-15,32,33" max="16,42,58"/&gt;
+            &lt;point&gt;0.5,33,48.5&lt;/point&gt;
+        &lt;/spawn&gt;
+    &lt;/spawns&gt;
+    &lt;default yaw="90"&gt;
+        &lt;cuboid min="-75.5,42.5,-0.5" max="-73.5,42.5,1.5"/&gt;
+    &lt;/default&gt;
 &lt;/spawns&gt;
 </code></pre>
 
@@ -766,10 +768,9 @@ To use regions in spawns, portals etc reference them by their name.</p>
 
 <p>Position and direction attributes of the <code>&lt;portal&gt;</code> element are relative to the players location and where they are looking. Prefix values with an at symbol <code>@</code> to specify absolute values. Portals can be restricted to certain teams by defining their <code>filter=""</code> attribute.</p>
 
-<p><code>yaw=""</code> specifies what direction the player is looking horizontally from -180° to 180°. South 0°, East -90°, North 180° and West 90°.
-<code>pitch=""</code> specifies what direction the player is looking vertically from -90° to 90°. -90° is straight up 90° is straight down.</p>
-
-<p><code>TIP:</code> Copy the yaw and pitch from the F3 screen in minecraft.</p>
+<p><code>yaw=""</code> specifies what direction the player is looking horizontally from -180° to 180°. South 0°, East -90°, North 180° and West 90°.<br/>
+<code>pitch=""</code> specifies what direction the player is looking vertically from -90° to 90°. -90° is straight up 90° is straight down.<br/>
+<code>TIP:</code> Copy the yaw from the F3 screen in minecraft.</p>
 
 <p>Examples:</p>
 
@@ -957,7 +958,7 @@ WITHER - Deals damage to an entity over time and gives the health to the shooter
 
 <h3><a href="#pageTop">Go to Top</a></h3>
 
-<p><em>Last edited: February 25, 2013</em></p>
+<p><em>Last edited: March 9, 2013</em></p>
 
 <p><em>Source code can be found on Github: <a href="https://github.com/McSpider/PGM-XML-Reference">mcspider.github <img src="./images/External-Link.png" alt="" /></a> Feel free to fork and improve this document.</em></p>
 
