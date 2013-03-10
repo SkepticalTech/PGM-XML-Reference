@@ -1,18 +1,18 @@
 ####Notes
 
-* Maybe add documentation for the `<spawns safe="true">` attribute?
 * `TODO:` watch a match of Parallax to see how exactly lanes function so I can write a better description.
-* Perhaps follow the [wikipedia writing guide](http://en.wikipedia.org/wiki/Wikipedia:Writing_better_articles) & rewrite the sections that use you or your?
+* Perhaps follow the [wikipedia writing guide ![](./images/External-Link.png)](http://en.wikipedia.org/wiki/Wikipedia:Writing_better_articles) & rewrite the sections that use you or your?
+* Document the `<point>` element. See the [Babylon spawns ![](./images/External-Link.png)](https://maps.oc.tc/Babylon/map.xml) for an example.
 
 **Undocumented Commits & Stuff:**
 
 * `af0349` Allow velocity to be set when entering regions.
 * Added the ability to specify what dimension a world can be loaded in.
 * Score `<limit>` and `<death>` subelement. ???  
-`<death>` element specifies the score amount added/subtracted for kills/deaths.
+`<death>` element specifies the score amount added/subtracted for kills/deaths.  
 `<limit>` limits the score, when a team (player?) reaches this score the game ends.
 
-* Added the health and hunger kits.
+* Added the health and hunger kits.  
 
       <!--  Min and max values? -->
       <health>20</health>

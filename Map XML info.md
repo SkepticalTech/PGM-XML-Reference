@@ -435,20 +435,20 @@ Example:
 <br/><br/>
 ###[Regions](id:regions_S) ~
 
-The area a region applies too is specified with one or more of the following elements. Use `oo` to specify infinity in coordinates.
+The area a region applies too is specified with one or more of the following elements. Use `oo` and `-oo` to specify positive/negative infinity in coordinates.
 
     <!-- Note that Y is the up/down axis in minecraft -->
     
     <rectangle name="something" min="X1,Z1" max="X2,Z2"/>
     <!-- A Rectangle from X1,Z1 to X2,Z2 -->
-       
+    
     <cuboid name="something" min="X1,Y1,Z1" max="X2,Y2,Z2"/>
     <!-- A rectangular solid from X1,Y1,Z1 to X2,Y2,Z2 -->
-       
+    
     <circle name="something" center="X1,Z1," radius="R"/>
     <!-- A circle located at X1,Z1 with a radius of R -->
     Goes from 0 to map height, ie doesn't check player Z
-       
+    
     <cylinder name"something" base="X1,Y1,Z1" radius="R" height="H"/>
     <!-- A cylinder located at X1,Z1,Y1 with a radius of R and a height of H -->    
     
@@ -607,12 +607,14 @@ Spawns are defined as follows.
         </default>
     </spawns>
 
-The default element specifies where observers and players without a team spawn.  
+The default element specifies where observers and players without a team spawn. There should only be a single default spawn.  
 `yaw=""` specifies what direction the player is looking horizontally from -180° to 180°. South 0°, East -90°, North 180° and West 90°.  
 
 `TIP:` You can copy the yaw from the F3 screen in minecraft.  
 
-Multiple spawns from the same team can be grouped inside of a single `<spawns team="team name">` element. Spawn locations are picked randomly, and the plugin does not validate the end location. Spawn regions should be checked to make sure that they don't intersect with any solid objects. Spawn elements accept more that one region or region area, and they don't have to be inside a union element.
+Multiple spawns from the same team can be grouped inside of a single `<spawns team="team name">` element. Spawn positions are picked randomly inside of the defined regions. The plugin will not validate the spawn position by default. Regions should be checked to make sure that they don't intersect with solid objects or are midair. Spawns can also be defined with the `safe="true"` attribute, PGM will then check that the player spawns on a solid object and not midair.
+
+Spawn elements accept more that one region or region area. If they are not inside a `<union>` element one region will be picked at random for each spawn event.
 
     <spawns team="blue">
         <!-- Blue Team Spawn A -->
@@ -631,21 +633,21 @@ Multiple spawns from the same team can be grouped inside of a single `<spawns te
         </spawn>
     </spawns>
     
-    <spawns team="red">
-        <!-- Red Team Spawn A -->
-        <spawn yaw="270">
-            <cuboid min="-56,4,55" max="-58,4,57"/>
-        </spawn>
-        <spawn yaw="180">
-            <cuboid min="-64,4,49" max="-62,4,51"/>
-        </spawn>
-        <!-- Red Team Spawn B -->
-        <spawn yaw="180">
-            <cuboid min="63,4,49" max="65,4,51"/>
-        </spawn>
-        <spawn yaw="90">
-            <cuboid min="57,4,57" max="59,4,55"/>
-        </spawn>
+    <!-- Example spawn from Harb-->
+    <spawns>
+        <spawns safe="true">
+            <spawn team="blue" kit="blue" yaw="0">
+                <cuboid min="-15,32,-57" max="16,42,-32"/>
+                <point>0.5,33,-47.5</point>
+            </spawn>
+            <spawn team="red" kit="red" yaw="180">
+                <cuboid min="-15,32,33" max="16,42,58"/>
+                <point>0.5,33,48.5</point>
+            </spawn>
+        </spawns>
+        <default yaw="90">
+            <cuboid min="-75.5,42.5,-0.5" max="-73.5,42.5,1.5"/>
+        </default>
     </spawns>
     
 
@@ -695,10 +697,9 @@ Example from [Parallax ![](./images/External-Link.png)](https://maps.oc.tc/Paral
 
 Position and direction attributes of the `<portal>` element are relative to the players location and where they are looking. Prefix values with an at symbol `@` to specify absolute values. Portals can be restricted to certain teams by defining their `filter=""` attribute.  
 
-`yaw=""` specifies what direction the player is looking horizontally from -180° to 180°. South 0°, East -90°, North 180° and West 90°.
-`pitch=""` specifies what direction the player is looking vertically from -90° to 90°. -90° is straight up 90° is straight down.
-
-`TIP:` Copy the yaw and pitch from the F3 screen in minecraft.  
+`yaw=""` specifies what direction the player is looking horizontally from -180° to 180°. South 0°, East -90°, North 180° and West 90°.  
+`pitch=""` specifies what direction the player is looking vertically from -90° to 90°. -90° is straight up 90° is straight down.  
+`TIP:` Copy the yaw from the F3 screen in minecraft.  
 
 Examples:
 
@@ -886,6 +887,6 @@ Copied from: [bukkit docs - Enchantments ![](./images/External-Link.png)](http:/
 
 ### [Go to Top](#pageTop)
 
-*Last edited: February 25, 2013*  
+*Last edited: March 9, 2013*  
 
 *Source code can be found on Github: [mcspider.github ![](./images/External-Link.png)](https://github.com/McSpider/PGM-XML-Reference) Feel free to fork and improve this document.*  
