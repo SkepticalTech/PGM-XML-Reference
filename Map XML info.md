@@ -883,6 +883,6 @@ Copied from: [bukkit docs - Enchantments ![](./images/External-Link.png)](http:/
 
 ### [Go to Top](#pageTop)
 
-*Last edited: March 9, 2013*  
+*Last edited: March 13, 2013*  
 
 *Source code can be found on Github: [mcspider.github ![](./images/External-Link.png)](https://github.com/McSpider/PGM-XML-Reference) Feel free to fork and improve this document.*  
