@@ -388,7 +388,7 @@ Specify if a player can starve to death, usually used with the difficulty settin
 
 Filters are used to filter player, block and world events in regions. The filter name is used to reference it inside of regions. On their own filters do nothing, you need to apply them to regions for them to do something. Filters can inherit filters using the `parents=""` attribute.
 
-####Predefined Filter Parents
+####Predefined Filters
 
     allow-all / deny-all
     <!-- allows or denies every filter -->
@@ -447,7 +447,7 @@ The area a region applies too is specified with one or more of the following ele
     
     <circle name="something" center="X1,Z1," radius="R"/>
     <!-- A circle located at X1,Z1 with a radius of R -->
-    Goes from 0 to map height, ie doesn't check player Z
+    <!-- Goes from 0 to map height, i.e. PGM doesn't check the players Y position -->
     
     <cylinder name"something" base="X1,Y1,Z1" radius="R" height="H"/>
     <!-- A cylinder located at X1,Z1,Y1 with a radius of R and a height of H -->    
@@ -491,14 +491,10 @@ Filters and kits are applied to regions as attributes of the `<apply>` element.
     <!-- Filter right-click events-->
     
     kit="kit name"
-    <!-- Give a kit to players entering the region -->
-    
-    <apply enter="only-blue" message="You may not enter the enemy team's base!">
-        <region name="region name"/>
-    </apply>
 
 Example kit region from [Anathema](https://maps.oc.tc/Anathema/map.xml).
 
+    <!-- Give a kit to players entering the region -->
     <apply kit="knight">
         <region name="r-knight"/>
         <region name="b-knight"/>
@@ -633,7 +629,7 @@ Spawn elements accept more that one region or region area. If they are not insid
         </spawn>
     </spawns>
     
-    <!-- Example spawn from Harb-->
+    <!-- Example spawns from Harb -->
     <spawns>
         <spawns safe="true">
             <spawn team="blue" kit="blue" yaw="0">
