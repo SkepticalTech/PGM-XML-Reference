@@ -440,7 +440,7 @@ Specify if a player can starve to death, usually used with the difficulty settin
 
 <p>Filters are used to filter player, block and world events in regions. The filter name is used to reference it inside of regions. On their own filters do nothing, you need to apply them to regions for them to do something. Filters can inherit filters using the <code>parents=""</code> attribute.</p>
 
-<h4>Predefined Filter Parents</h4>
+<h4>Predefined Filters</h4>
 
 <pre><code>allow-all / deny-all
 &lt;!-- allows or denies every filter --&gt;
@@ -510,7 +510,7 @@ allow-mobs / deny-mobs
 
 &lt;circle name="something" center="X1,Z1," radius="R"/&gt;
 &lt;!-- A circle located at X1,Z1 with a radius of R --&gt;
-Goes from 0 to map height, ie doesn't check player Z
+&lt;!-- Goes from 0 to map height, i.e. PGM doesn't check the players Y position --&gt;
 
 &lt;cylinder name"something" base="X1,Y1,Z1" radius="R" height="H"/&gt;
 &lt;!-- A cylinder located at X1,Z1,Y1 with a radius of R and a height of H --&gt;    
@@ -553,16 +553,12 @@ use="filter name"
 &lt;!-- Filter right-click events--&gt;
 
 kit="kit name"
-&lt;!-- Give a kit to players entering the region --&gt;
-
-&lt;apply enter="only-blue" message="You may not enter the enemy team's base!"&gt;
-    &lt;region name="region name"/&gt;
-&lt;/apply&gt;
 </code></pre>
 
 <p>Example kit region from <a href="https://maps.oc.tc/Anathema/map.xml">Anathema</a>.</p>
 
-<pre><code>&lt;apply kit="knight"&gt;
+<pre><code>&lt;!-- Give a kit to players entering the region --&gt;
+&lt;apply kit="knight"&gt;
     &lt;region name="r-knight"/&gt;
     &lt;region name="b-knight"/&gt;
 &lt;/apply&gt;
@@ -702,7 +698,7 @@ To use regions in spawns, portals etc reference them by their name.</p>
     &lt;/spawn&gt;
 &lt;/spawns&gt;
 
-&lt;!-- Example spawn from Harb--&gt;
+&lt;!-- Example spawns from Harb --&gt;
 &lt;spawns&gt;
     &lt;spawns safe="true"&gt;
         &lt;spawn team="blue" kit="blue" yaw="0"&gt;
@@ -958,7 +954,7 @@ WITHER - Deals damage to an entity over time and gives the health to the shooter
 
 <h3><a href="#pageTop">Go to Top</a></h3>
 
-<p><em>Last edited: March 9, 2013</em></p>
+<p><em>Last edited: March 13, 2013</em></p>
 
 <p><em>Source code can be found on Github: <a href="https://github.com/McSpider/PGM-XML-Reference">mcspider.github <img src="./images/External-Link.png" alt="" /></a> Feel free to fork and improve this document.</em></p>
 
