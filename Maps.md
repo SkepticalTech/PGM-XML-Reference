@@ -1,6 +1,6 @@
 ###Creating a Map
 
-To create a world it is recomended that you setup a bukkit server with [worldedit ![](./images/External-Link.png)](http://dev.bukkit.org/server-mods/worldedit/) & [voxel sniper ![](./images/External-Link.png)](http://dev.bukkit.org/server-mods/voxelsniper/).
+To create a world it is recommended that you setup a bukkit server with [worldedit ![](./images/External-Link.png)](http://dev.bukkit.org/server-mods/worldedit/) & [voxel sniper ![](./images/External-Link.png)](http://dev.bukkit.org/server-mods/voxelsniper/).
 It is also recommended that worlds are created in a empty flatworld. There are several ways to do this:
 
 __Option 1:__  
