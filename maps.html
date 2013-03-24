@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" style=" height: 100%;">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<link rel="stylesheet" href="./highlight.js/styles/custom.css"/>
+	<link rel="stylesheet" href="./style.css"/>
+	<script src="./highlight.js/highlight.pack.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	<title>
+		Map XML Reference
+	</title>
+</head>
+
+<body>
+
+<div id="container">
+
+<h3>Creating a Map</h3>
+
+<p>To create a world it is recommended that you setup a bukkit server with <a href="http://dev.bukkit.org/server-mods/worldedit/">worldedit <img src="./images/External-Link.png" alt="" /></a> &amp; <a href="http://dev.bukkit.org/server-mods/voxelsniper/">voxel sniper <img src="./images/External-Link.png" alt="" /></a>.
+It is also recommended that worlds are created in a empty flatworld. There are several ways to do this:</p>
+
+<p><strong>Option 1:</strong><br/>
+Download this level data file: <a href="./resources/level.dat">level.dat</a><br/>
+Create a empty world folder and place it in there. Then load the world.
+This level.dat uses the flatworld generator with this preset string: <code>2;0;1;4</code> You can also use this string directly in minecraft for the flatworld generator settings.</p>
+
+<p><strong>Option 2:</strong><br/>
+Install one of the bukkit void world generator plugins such as:<br/>
+<a href="http://dev.bukkit.org/server-mods/voidgenerator/">Bukkit - VoidGenerator <img src="./images/External-Link.png" alt="" /></a></p>
+
+<p><code>Note:</code> Starting to build in a void world can be a-bit tricky if you don't have world edit or voxelsniper installed since theres nothing to build on. This can be remedied by using <a href="http://www.mcedit.net">MCEdit <img src="./images/External-Link.png" alt="" /></a> to create a starter platform.</p>
+
+<h4>Flat World Generator Options</h4>
+
+<p>The flat world generator options string consists of four parts: <code>version;blocks;biome;structures</code> The only thing you should change from the void world settings is the biome.</p>
+
+<pre><code>#   Biome
+0   Ocean
+1   Plains
+2   Desert
+3   Extreme Hills
+4   Forest
+5   Taiga
+6   Swampland
+7   River
+8   Hell (Nether)
+9   Sky (End)
+10  Frozen Ocean
+11  Frozen River
+12  Ice Plains
+13  Ice Mountains
+14  Mushroom Island
+15  Mushroom Island Shore
+16  Beach
+17  Desert Hills
+18  Forest Hills
+19  Taiga Hills
+20  Extreme Hills Edge
+21  Jungle
+22  Jungle Hills
+</code></pre>
+
+<p>Copied from: <a href="http://www.minecraftwiki.net/wiki/Data_values#Biome_IDs">minecraft wiki - BiomeIDs <img src="./images/External-Link.png" alt="" /></a></p>
+
+</div>
+
+<footer>
+2013 McSpider<br/>All rights reserved, where applicable.
+</footer>
+
+</body>
+
+</html>

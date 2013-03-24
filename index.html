@@ -30,6 +30,37 @@
 
 <p><br/></p>
 
+<h3>Misc notes</h3>
+
+<blockquote><p><em>Guide is still a WIP, some sections need rewrites to make them clearer.</em></p></blockquote>
+
+<ul>
+<li>PGM stands for PVP Game Manager.</li>
+<li>A maps XML file is used to specify how the PGM plugin will setup a match, it's useless without the PGM plugin to run it.</li>
+<li>To disable void fog &amp; the dark horizon change the maps level.dat generatorName to flat.</li>
+</ul>
+
+
+<p><strong>XML Files:</strong></p>
+
+<ul>
+<li>What is XML? <a href="http://www.w3schools.com/xml/xml_whatis.asp">Introduction to XML <img src="./images/External-Link.png" alt="" /></a></li>
+<li>See <a href="https://maps.oc.tc">maps.oc.tc <img src="./images/External-Link.png" alt="" /></a> for XML file examples.</li>
+<li>The XML files should be run through a XML validator before being submitted.</li>
+<li>XML files should also be correctly indented to improve readability.</li>
+</ul>
+
+
+<p><strong>Maps:</strong></p>
+
+<ul>
+<li>See <a href="./maps.html">Creating a Map</a> for general map creation info.</li>
+<li>Also go to <a href="https://oc.tc/forums/4fc17a0cc4637515f700001a">Project Ares Forum - Help: Map Making <img src="./images/External-Link.png" alt="" /></a></li>
+</ul>
+
+
+<p><br/><br/></p>
+
 <h3>Map Info</h3>
 
 <pre><code>&lt;?xml version="1.0"?&gt;
@@ -45,27 +76,10 @@
     &lt;contributor contribution="A contribution"&gt;aHelper&lt;/contributor&gt;
 &lt;/contributors&gt;
 
-&lt;!-- Other map stuff --&gt;
+&lt;!-- Other map stuff, i.e. objectives, regions, spawns. --&gt;
 
 &lt;/map&gt;
 </code></pre>
-
-<h4>Misc notes</h4>
-
-<blockquote><p>Guide is still a WIP, some sections need rewrites to make them clearer.</p></blockquote>
-
-<ul>
-<li>What is XML? <a href="http://www.w3schools.com/xml/xml_whatis.asp">Introduction to XML <img src="./images/External-Link.png" alt="" /></a></li>
-<li>PGM stands for PVP Game Manager.</li>
-<li>A maps XML file is used to specify how the PGM plugin will setup a match, it's useless without the PGM plugin to run it.</li>
-<li>See <a href="https://maps.oc.tc">maps.oc.tc <img src="./images/External-Link.png" alt="" /></a> for XML file examples.</li>
-<li>The XML files should be run through a XML validator before being submitted.</li>
-<li>XML files should also be correctly indented to improve readability.</li>
-<li>To disable void fog &amp; the dark horizon change the maps level.dat generatorName to flat.</li>
-</ul>
-
-
-<p><br/><br/></p>
 
 <h3><span id="gameModes_S">Game Modes</span></h3>
 
@@ -906,7 +920,7 @@ ARROW_INFINITE - Provides infinite arrows when shooting a bow.
 
 <p>Copied from: <a href="http://jd.bukkit.org/doxygen/dd/d17/classorg_1_1bukkit_1_1enchantments_1_1Enchantment.html">bukkit docs - Enchantments <img src="./images/External-Link.png" alt="" /></a></p>
 
-<h4><span id="potions_S">Potions</span></h4>
+<h4><span id="potions_S">Potion Effects</span></h4>
 
 <pre><code>SPEED - Increases movement speed.
 
@@ -946,15 +960,16 @@ WEAKNESS - Decreases damage dealt by an entity.
 
 POISON - Deals damage to an entity over time.
 
+&lt;!-- May not work as expected with PGM --&gt;
 WITHER - Deals damage to an entity over time and gives the health to the shooter.
 </code></pre>
 
-<p> Copied from: <a href="http://jd.bukkit.org/doxygen/d3/d70/classorg_1_1bukkit_1_1potion_1_1PotionEffectType.html">bukkit docs - Potion Effect Types <img src="./images/External-Link.png" alt="" /></a><br/>
- See: <a href="http://www.minecraftwiki.net/wiki/Potions">Minecraft wiki - Potions <img src="./images/External-Link.png" alt="" /></a> for potion damage values.</p>
+<p>Copied from: <a href="http://jd.bukkit.org/doxygen/d3/d70/classorg_1_1bukkit_1_1potion_1_1PotionEffectType.html">bukkit docs - Potion Effect Types <img src="./images/External-Link.png" alt="" /></a><br/>
+See: <a href="http://www.minecraftwiki.net/wiki/Potions">Minecraft wiki - Potions <img src="./images/External-Link.png" alt="" /></a> for potion damage values.</p>
 
 <h3><a href="#pageTop">Go to Top</a></h3>
 
-<p><em>Last edited: March 13, 2013</em></p>
+<p><em>Last edited: March 23, 2013</em></p>
 
 <p><em>Source code can be found on Github: <a href="https://github.com/McSpider/PGM-XML-Reference">mcspider.github <img src="./images/External-Link.png" alt="" /></a> Feel free to fork and improve this document.</em></p>
 
