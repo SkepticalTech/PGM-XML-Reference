@@ -8,7 +8,27 @@
 #### Reference: [Inventory](#inv_S) | [Colours](#colours_S) | [Enchantments](#enchantments_S) | [Potions](#potions_S)
 <br/>
 
+###Misc notes
 
+> _Guide is still a WIP, some sections need rewrites to make them clearer._  
+
+* PGM stands for PVP Game Manager.
+* A maps XML file is used to specify how the PGM plugin will setup a match, it's useless without the PGM plugin to run it.
+* To disable void fog & the dark horizon change the maps level.dat generatorName to flat.
+
+__XML Files:__
+
+* What is XML? [Introduction to XML ![](./images/External-Link.png)](http://www.w3schools.com/xml/xml_whatis.asp)
+* See [maps.oc.tc ![](./images/External-Link.png)](https://maps.oc.tc) for XML file examples.
+* The XML files should be run through a XML validator before being submitted.
+* XML files should also be correctly indented to improve readability.
+
+__Maps:__
+
+* See [Creating a Map](./maps.html) for general map creation info.
+* Also go to [Project Ares Forum - Help: Map Making ![](./images/External-Link.png)](https://oc.tc/forums/4fc17a0cc4637515f700001a)
+
+<br/><br/>
 ###Map Info
 
     <?xml version="1.0"?>
@@ -24,25 +44,11 @@
         <contributor contribution="A contribution">aHelper</contributor>
     </contributors>
     
-    <!-- Other map stuff -->
+    <!-- Other map stuff, i.e. objectives, regions, spawns. -->
     
     </map>
 
 
-####Misc notes
-
-> Guide is still a WIP, some sections need rewrites to make them clearer.  
-
-* What is XML? [Introduction to XML ![](./images/External-Link.png)](http://www.w3schools.com/xml/xml_whatis.asp)
-* PGM stands for PVP Game Manager.
-* A maps XML file is used to specify how the PGM plugin will setup a match, it's useless without the PGM plugin to run it.
-* See [maps.oc.tc ![](./images/External-Link.png)](https://maps.oc.tc) for XML file examples.
-* The XML files should be run through a XML validator before being submitted.
-* XML files should also be correctly indented to improve readability.
-* To disable void fog & the dark horizon change the maps level.dat generatorName to flat.
-
-
-<br/><br/>
 ###[Game Modes](id:gameModes_S)
 
 All game modes are compatible with each other except for Blitz, it will not work with any other game mode. For example you can mix `<wools>` and `<destroyables>` however all objectives have to be completed for the match to end.
@@ -834,7 +840,7 @@ Copied from: [bukkit docs - Enchantments ![](./images/External-Link.png)](http:/
 
 
 
-####[Potions](id:potions_S)
+####[Potion Effects](id:potions_S)
 
     SPEED - Increases movement speed.
    
@@ -874,15 +880,16 @@ Copied from: [bukkit docs - Enchantments ![](./images/External-Link.png)](http:/
    
     POISON - Deals damage to an entity over time.
    
+    <!-- May not work as expected with PGM -->
     WITHER - Deals damage to an entity over time and gives the health to the shooter.
 
 
- Copied from: [bukkit docs - Potion Effect Types ![](./images/External-Link.png)](http://jd.bukkit.org/doxygen/d3/d70/classorg_1_1bukkit_1_1potion_1_1PotionEffectType.html)  
- See: [Minecraft wiki - Potions ![](./images/External-Link.png)](http://www.minecraftwiki.net/wiki/Potions) for potion damage values.
+Copied from: [bukkit docs - Potion Effect Types ![](./images/External-Link.png)](http://jd.bukkit.org/doxygen/d3/d70/classorg_1_1bukkit_1_1potion_1_1PotionEffectType.html)  
+See: [Minecraft wiki - Potions ![](./images/External-Link.png)](http://www.minecraftwiki.net/wiki/Potions) for potion damage values.
 
 
 ### [Go to Top](#pageTop)
 
-*Last edited: March 13, 2013*  
+*Last edited: March 23, 2013*  
 
 *Source code can be found on Github: [mcspider.github ![](./images/External-Link.png)](https://github.com/McSpider/PGM-XML-Reference) Feel free to fork and improve this document.*  
