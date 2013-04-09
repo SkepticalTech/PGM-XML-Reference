@@ -5,7 +5,7 @@
 #### Game Modes: [Capture the Wool](#ctw_S) | [Destroy the Monument](#dtm_S) | [Blitz](#blitz_S) | [Destroy the Core](#dtc_S) | [Team Death-match](#tdm_S) | [Score Boxes](#score_S)
 #### Game Settings: [Rules](#rules_S) | [Teams](#teams_S) | [Kits](#kits_S) | [Items](#items_S) | [Potion Effects](#potionEffects_S) | [Repair & Remove](#repairAndRemove_S) | [Projectiles](#projectiles_S) | [TNT](#tnt_S) | [Mobs](#mobs_S) | [Other Settings](#other_S)
 #### Regions: [Filters](#filters_S) | [Regions](#regions_S) | [Spawns](#spawns_S) | [Playable Region](#playableRegion_S) | [Lanes](#lanes_S) | [Portals](#portals_S)
-#### Miscellaneous: [Kill Reward](#killreward_S)
+#### Miscellaneous: [Kill Reward](#killreward_S) | [Multitrade](#multitrade_S)
 #### Reference: [Inventory](#inv_S) | [Colours](#colours_S) | [Enchantments](#enchantments_S) | [Potions](#potions_S)
 <br/>
 
@@ -749,6 +749,8 @@ Examples:
 
 <br/>
 ### [Go to Top](#pageTop)
+<br/><br/><br/>
+
 
 ###[Miscellaneous](id:misc_S)
 
@@ -761,12 +763,25 @@ So far, the only reward availible is an `<item>`. Any parameter available while 
 
 Examples:
 
-    <!-- Kill Reward from Rift -->
+    <!-- Kill Reward from Rift XML -->
     <killreward>
         <item amount="2">emerald</item>
-    </killreward
+    </killreward>
 
+
+####[Multi Trade](id:multitrade_S)
+
+The multitrade module allows multiple people to trade with the same villager.
+
+Examples:
+
+    <!-- Multitrade from Rift XML -->
+    <multitrade/>
+    
+    
 ### [Go to Top](#pageTop)
+
+
 <br/><br/><br/>
 ###[Reference](id:reference_S)
 
