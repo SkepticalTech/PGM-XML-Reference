@@ -26,6 +26,8 @@
 
 <h4>Regions: <a href="#filters_S">Filters</a> | <a href="#regions_S">Regions</a> | <a href="#spawns_S">Spawns</a> | <a href="#playableRegion_S">Playable Region</a> | <a href="#lanes_S">Lanes</a> | <a href="#portals_S">Portals</a></h4>
 
+<h4>Miscellaneous: <a href="#killreward_S">Kill Reward</a> | <a href="#multitrade_S">Multitrade</a></h4>
+
 <h4>Reference: <a href="#inv_S">Inventory</a> | <a href="#colours_S">Colours</a> | <a href="#enchantments_S">Enchantments</a> | <a href="#potions_S">Potions</a></h4>
 
 <p><br/></p>
@@ -809,7 +811,34 @@ To use regions in spawns, portals etc reference them by their name.</p>
 &lt;/portals&gt;
 </code></pre>
 
-<p><br/></p>
+<p><br/><br/></p>
+
+<h3><span id="misc_S">Miscellaneous</span></h3>
+
+<p>Anything that does not fit in to another catgory is documented here</p>
+
+<h4><span id="killreward_S">Kill Reward</span></h4>
+
+<p>The kill reward module allows a player to get an item when they kill someone. The parameters are wrapped in a <code>&lt;killreward&gt;</code> block.
+So far, the only reward availible is an <code>&lt;item&gt;</code>. Any parameter available while giving <a href="#kits_S">kits</a> will be available here.</p>
+
+<p>Examples:</p>
+
+<pre><code>&lt;!-- Kill Reward from Rift XML --&gt;
+&lt;killreward&gt;
+    &lt;item amount="2"&gt;emerald&lt;/item&gt;
+&lt;/killreward&gt;
+</code></pre>
+
+<h4><span id="multitrade_S">Multi Trade</span></h4>
+
+<p>The multitrade module allows multiple people to trade with the same villager.</p>
+
+<p>Examples:</p>
+
+<pre><code>&lt;!-- Multitrade from Rift XML --&gt;
+&lt;multitrade/&gt;
+</code></pre>
 
 <h3><a href="#pageTop">Go to Top</a></h3>
 
@@ -969,7 +998,7 @@ See: <a href="http://www.minecraftwiki.net/wiki/Potions">Minecraft wiki - Potion
 
 <h3><a href="#pageTop">Go to Top</a></h3>
 
-<p><em>Last edited: March 23, 2013</em></p>
+<p><em>Last edited: April 9, 2013</em></p>
 
 <p><em>Source code can be found on Github: <a href="https://github.com/McSpider/PGM-XML-Reference">mcspider.github <img src="./images/External-Link.png" alt="" /></a> Feel free to fork and improve this document.</em></p>
 
