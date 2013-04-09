@@ -747,14 +747,11 @@ Examples:
     </portals>
 
 
-<br/>
-### [Go to Top](#pageTop)
-<br/><br/><br/>
-
-
+<br/><br/>
 ###[Miscellaneous](id:misc_S)
 
 Anything that does not fit in to another catgory is documented here
+
 
 ####[Kill Reward](id:killreward_S)
 
@@ -777,10 +774,10 @@ Examples:
 
     <!-- Multitrade from Rift XML -->
     <multitrade/>
-    
-    
-### [Go to Top](#pageTop)
 
+
+
+### [Go to Top](#pageTop)
 
 <br/><br/><br/>
 ###[Reference](id:reference_S)
@@ -939,6 +936,6 @@ See: [Minecraft wiki - Potions ![](./images/External-Link.png)](http://www.minec
 
 ### [Go to Top](#pageTop)
 
-*Last edited: March 23, 2013*  
+*Last edited: April 9, 2013*  
 
 *Source code can be found on Github: [mcspider.github ![](./images/External-Link.png)](https://github.com/McSpider/PGM-XML-Reference) Feel free to fork and improve this document.*  

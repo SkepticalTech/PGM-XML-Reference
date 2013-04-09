@@ -35,13 +35,24 @@ Possibly Documented:
 <br/>
 **Other**
 
-Stolen from [RFV3 ![](./images/External-Link.png)](https://maps.oc.tc/RFV3/map.xml) What exactly does this do?
+Stolen from [RFV3 ![](./images/External-Link.png)](https://maps.oc.tc/RFV3/map.xml)
+Basically what this does is check the specified regions for blocks on the bottom layer of the world. It then creates an outline of those blocks and players can only place blocks inside that outline. Bridges are usually not detected because they are not at `y=0`, PGM should probably squash all `Y` layers into one before creating the outline.
 
-    <filter name="no-void" parents="allow-all">
-        <deny><void/></deny>
-    </filter>
+    <filters>
+        <filter name="no-void" parents="allow-all">
+            <deny><void/></deny>
+        </filter>
+    </filters>
 
-
+    <regions>
+        <apply block="no-void" message="You may not edit the void area">
+            <negative>
+             <rectangle min="-14,-12" max="15,13"/>
+             <region name="portals"/>
+            </negative>
+        </apply>
+    </regions>
+    
 
 #### Symbol Information
 `§` Indicates that the previous statement is a logical assumption by the author, and not based on any facts as of when it was written.  
