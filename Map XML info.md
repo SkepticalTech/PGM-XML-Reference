@@ -5,6 +5,7 @@
 #### Game Modes: [Capture the Wool](#ctw_S) | [Destroy the Monument](#dtm_S) | [Blitz](#blitz_S) | [Destroy the Core](#dtc_S) | [Team Death-match](#tdm_S) | [Score Boxes](#score_S)
 #### Game Settings: [Rules](#rules_S) | [Teams](#teams_S) | [Kits](#kits_S) | [Items](#items_S) | [Potion Effects](#potionEffects_S) | [Repair & Remove](#repairAndRemove_S) | [Projectiles](#projectiles_S) | [TNT](#tnt_S) | [Mobs](#mobs_S) | [Other Settings](#other_S)
 #### Regions: [Filters](#filters_S) | [Regions](#regions_S) | [Spawns](#spawns_S) | [Playable Region](#playableRegion_S) | [Lanes](#lanes_S) | [Portals](#portals_S)
+#### Miscellaneous: [Kill Reward](#killreward_S) | [Multitrade](#multitrade_S)
 #### Reference: [Inventory](#inv_S) | [Colours](#colours_S) | [Enchantments](#enchantments_S) | [Potions](#potions_S)
 <br/>
 
@@ -276,17 +277,25 @@ The damage specifies the potion type. [Minecraft wiki - Potions ![](./images/Ext
 
 Defines tools that will be automatically repaired when dropped and picked up again. This will also merge items that are picked up, i.e., picking up an iron sword would result in it merging with your sword and repairing it. Repaired items will keep their enchantment, unlike vanilla minecraft where they will not.
 
-    <toolrepair>        <tool>iron sword</tool>        <tool>bow</tool>
+    <toolrepair>
+        <tool>iron sword</tool>
+        <tool>bow</tool>
     </toolrepair>
 
 Defines items that will be deleted when dropped on the map. Also works when items are destroyed, such as seeds from tall grass, etc.
-    <itemremove>        <item>arrow</item>        <item>cooked fish</item>
+
+    <itemremove>
+        <item>arrow</item>
+        <item>cooked fish</item>
         <item>diamond helmet</item>
-        <item>iron chestplate</item>    </itemremove>
+        <item>iron chestplate</item>
+    </itemremove>
 
 ####[Projectiles](id:projectiles_S)
 
-    <modifybowprojectile>        <projectile>EnderPearl</projectile>        <velocityMod>2.5</velocityMod>
+    <modifybowprojectile>
+        <projectile>EnderPearl</projectile>
+        <velocityMod>2.5</velocityMod>
     </modifybowprojectile>
 
 Projectiles can be modified to shoot a different entity at a custom speed. The PGM plugin will calculate the damage the projectile does using the same formula as minecraft does for arrows. This means that a flying fish with a velocity of 40 will almost certainly kill you.
@@ -398,8 +407,11 @@ Filters are used to filter player, block and world events in regions. The filter
 
     allow-all / deny-all
     <!-- allows or denies every filter -->
-        allow-players / deny-players
-    <!-- allow or deny player access -->        allow-blocks / deny-blocks
+    
+    allow-players / deny-players
+    <!-- allow or deny player access -->
+    
+    allow-blocks / deny-blocks
     <!-- allow or deny placement and breaking of blocks -->
     
     allow-place / deny-place
@@ -407,13 +419,18 @@ Filters are used to filter player, block and world events in regions. The filter
     
     allow-break / deny-break
     <!-- allow or deny breaking of blocks -->
-        allow-world / deny-world
-    <!-- allow or deny block transformations such as fire spread, water flowing, etc -->    
+    
+    allow-world / deny-world
+    <!-- allow or deny block transformations such as fire spread, water flowing, etc -->
+    
     allow-spawns / deny-spawns
     <!-- allows or denies player spawns -->
-        allow-entities / deny-entities
+    
+    allow-entities / deny-entities
     <!-- determines if entities will be allowed -->
-        allow-mobs / deny-mobs    <!-- allows or denies all mobs spawns, regardless of type -->
+    
+    allow-mobs / deny-mobs
+    <!-- allows or denies all mobs spawns, regardless of type -->
 
 
 ####Filter Exceptions
@@ -732,6 +749,38 @@ Examples:
 
 <br/>
 ### [Go to Top](#pageTop)
+<br/><br/><br/>
+
+
+###[Miscellaneous](id:misc_S)
+
+Anything that does not fit in to another catgory is documented here
+
+####[Kill Reward](id:killreward_S)
+
+The kill reward module allows a player to get an item when they kill someone. The parameters are wrapped in a `<killreward>` block.
+So far, the only reward availible is an `<item>`. Any parameter available while giving [kits](#kits_S) will be available here.
+
+Examples:
+
+    <!-- Kill Reward from Rift XML -->
+    <killreward>
+        <item amount="2">emerald</item>
+    </killreward>
+
+
+####[Multi Trade](id:multitrade_S)
+
+The multitrade module allows multiple people to trade with the same villager.
+
+Examples:
+
+    <!-- Multitrade from Rift XML -->
+    <multitrade/>
+    
+    
+### [Go to Top](#pageTop)
+
 
 <br/><br/><br/>
 ###[Reference](id:reference_S)
